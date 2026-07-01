@@ -3,105 +3,287 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA STUDIO Hero Update</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>NOVA STUDIO | Creative Marketing Partner</title>
+<meta name="description" content="NOVA STUDIO는 마케팅 전략, 콘텐츠, 광고, 상세페이지, PPT, 웹사이트까지 브랜드 성장에 필요한 실행을 함께하는 크리에이티브 마케팅 파트너입니다.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#ffffff;
+  --ink:#19171f;
+  --muted:#6d6878;
+  --soft:#f7f4ff;
+  --soft2:#efeaff;
+  --line:#e8e1ff;
+  --purple:#6c4dff;
+  --purple2:#a78bfa;
+  --pink:#ff7ab6;
+  --yellow:#fee500;
+  --shadow:0 26px 70px rgba(108,77,255,.14);
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif;
-    background:linear-gradient(180deg,#fff,#faf7ff);
-    color:#191919;
+  margin:0;
+  font-family:"SUIT Variable",-apple-system,BlinkMacSystemFont,"Pretendard",sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  word-break:keep-all;
+  overflow-x:hidden;
 }
+a{text-decoration:none;color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+@media(max-width:640px){.wrap{padding:0 18px}}
+
+.nav{
+  position:sticky;top:0;z-index:30;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(232,225,255,.8);
+}
+.nav .wrap{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:21px;letter-spacing:-.04em}
+.logo span{color:var(--purple)}
+.logo small{display:block;font-size:10px;letter-spacing:.16em;color:var(--muted);margin-top:-3px}
+.menu{display:flex;gap:28px;font-size:13px;font-weight:800;color:var(--muted)}
+.menu a:hover{color:var(--purple)}
+.kakao-top{background:var(--ink);color:#fff!important;padding:12px 18px;border-radius:999px}
+@media(max-width:800px){.menu a:not(.kakao-top){display:none}}
+
 .hero{
-    max-width:1280px;
-    margin:0 auto;
-    min-height:100vh;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
-    gap:80px;
-    padding:70px 40px;
+  background:
+    radial-gradient(circle at 78% 12%, rgba(108,77,255,.16), transparent 34%),
+    radial-gradient(circle at 18% 88%, rgba(255,122,182,.14), transparent 28%),
+    linear-gradient(180deg,#fff 0%,#fbf9ff 100%);
+  padding:88px 0 76px;
 }
-.eyebrow{
-    color:#7b61ff;
-    font-weight:700;
-    letter-spacing:.08em;
-    margin-bottom:18px;
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:58px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.mock-scene{min-height:420px}}
+.label{font-size:13px;font-weight:850;letter-spacing:.14em;color:var(--purple);text-transform:uppercase}
+h1{
+  font-size:clamp(42px,6vw,78px);
+  line-height:1.16;
+  letter-spacing:-.045em;
+  margin:18px 0 26px;
+  font-weight:700;
 }
-.hero h1{
-    font-size:78px;
-    font-weight:700;
-    line-height:1.18;
-    letter-spacing:-0.04em;
+h1 .nova{
+  display:block;
+  color:var(--purple);
+  font-size:clamp(28px,3.2vw,42px);
+  line-height:1.1;
+  letter-spacing:-.02em;
+  font-weight:850;
+  margin-bottom:18px;
 }
-.hero h1 .nova{
-    display:block;
-    font-size:30px;
-    color:#7b61ff;
-    margin-bottom:18px;
-    font-weight:800;
-    letter-spacing:.02em;
+.hero p{font-size:18px;line-height:1.8;color:var(--muted);max-width:560px;margin:0 0 34px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:999px;font-weight:850;border:1px solid var(--ink);transition:.18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.secondary{background:#fff;color:var(--ink)}
+.btn.kakao{background:var(--yellow);border-color:var(--yellow);color:#191600}
+
+.mock-scene{
+  position:relative;
+  min-height:520px;
 }
-.desc{
-    margin-top:34px;
-    font-size:20px;
-    color:#666;
-    line-height:1.8;
-    max-width:620px;
+.laptop{
+  position:absolute;right:0;top:14px;width:82%;
+  background:#1c1a24;border-radius:26px;padding:14px 14px 24px;
+  box-shadow:var(--shadow);
 }
-.btns{
-    display:flex;
-    gap:16px;
-    margin-top:40px;
+.screen{background:#fff;border-radius:16px;overflow:hidden;height:320px;border:1px solid rgba(255,255,255,.18)}
+.screen-head{height:48px;background:#1c1a24;color:#fff;display:flex;align-items:center;padding:0 20px;font-weight:850;font-size:13px;letter-spacing:.06em}
+.screen-body{padding:26px;background:linear-gradient(135deg,#fff,#f3eeff);height:272px}
+.screen-body h3{font-size:36px;line-height:1.05;margin:0 0 18px;letter-spacing:-.04em}
+.screen-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.screen-card{height:78px;border-radius:18px;background:#fff;border:1px solid var(--line);padding:14px}
+.line{height:8px;background:#dcd2ff;border-radius:99px;margin:8px 0}
+.line.short{width:58%}.line.mid{width:76%}
+.phone{
+  position:absolute;left:0;bottom:34px;width:160px;background:#1c1a24;border-radius:34px;padding:10px;
+  box-shadow:0 22px 54px rgba(68,46,151,.22);
 }
-.btn{
-    padding:16px 28px;
-    border-radius:14px;
-    text-decoration:none;
-    font-weight:700;
+.phone-inner{background:#fff;border-radius:25px;height:320px;padding:16px}
+.post-img{height:112px;border-radius:18px;background:linear-gradient(135deg,#eee7ff,#fff0f7);margin-bottom:14px}
+.post-card{height:70px;border-radius:16px;background:var(--soft);border:1px solid var(--line);margin-top:14px}
+.deck{
+  position:absolute;right:34%;bottom:0;width:250px;height:160px;background:#fff;border:1px solid var(--line);
+  border-radius:18px;transform:rotate(-7deg);box-shadow:0 22px 54px rgba(68,46,151,.16);
+  padding:24px;
 }
-.primary{background:#7b61ff;color:#fff}
-.secondary{border:1px solid #ddd;color:#222}
-.mockup{
-    height:640px;
-    border-radius:28px;
-    background:linear-gradient(135deg,#f7f2ff,#ffffff);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#aaa;
-    font-size:22px;
-}
+.deck b{font-size:22px;color:var(--purple)}
+.deck .mini-chart{height:52px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--pink));margin-top:16px}
+
+.stats{padding:36px 0;border-bottom:1px solid var(--line);background:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{padding:10px 0}
+.stat b{font-size:34px;color:var(--purple);letter-spacing:-.04em}
+.stat p{margin:6px 0 0;color:var(--muted);font-size:14px}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+section{padding:90px 0}
+.sec-head{text-align:center;margin-bottom:42px}
+.sec-head .label{margin-bottom:10px}
+.sec-head h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.05em;line-height:1.16;margin:0 0 14px;font-weight:750}
+.sec-head p{color:var(--muted);line-height:1.75;margin:0 auto;max-width:590px}
+
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:1000px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr}}
+.service{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;transition:.18s ease}
+.service:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.thumb{height:170px;background:var(--soft);position:relative;overflow:hidden}
+.thumb:after{content:"";position:absolute;inset:auto -20px -28px -20px;height:80px;background:rgba(108,77,255,.09);filter:blur(18px)}
+.thumb.report:before{content:"";position:absolute;inset:28px;background:#fff;border-radius:12px;box-shadow:28px 18px 0 #ded4ff}
+.thumb.ppt:before{content:"";position:absolute;left:25px;right:25px;top:42px;height:86px;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:16px}
+.thumb.web:before{content:"";position:absolute;left:28px;right:28px;top:28px;height:110px;background:#fff;border:10px solid #1c1a24;border-radius:18px}
+.thumb.detail:before{content:"";position:absolute;left:52px;top:20px;width:82px;height:130px;background:#fff;border-radius:16px;box-shadow:96px 22px 0 #ded4ff}
+.thumb.sns:before{content:"";position:absolute;left:36px;top:25px;width:82px;height:120px;background:#fff;border-radius:18px;box-shadow:92px 20px 0 #fff,184px 0 0 #fff}
+.thumb.ad:before{content:"SALE";position:absolute;left:30px;right:30px;top:48px;height:76px;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border-radius:16px;display:grid;place-items:center;font-weight:900;font-size:28px}
+.thumb.video:before{content:"▶";position:absolute;inset:40px;background:#1c1a24;color:#fff;border-radius:18px;display:grid;place-items:center;font-size:42px}
+.thumb.brand:before{content:"NOVA";position:absolute;inset:46px;background:#fff;color:var(--purple);border-radius:16px;display:grid;place-items:center;font-weight:900;font-size:28px}
+.service-body{padding:22px}
+.service h3{margin:0 0 10px;font-size:20px;letter-spacing:-.03em}
+.service p{margin:0;color:var(--muted);line-height:1.65;font-size:14px}
+
+.works{background:linear-gradient(180deg,#fbf9ff,#fff)}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.work-grid{grid-template-columns:1fr}}
+.work{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 14px 40px rgba(108,77,255,.07)}
+.work .thumb{height:220px}
+.work-body{padding:22px}
+.work h3{margin:0 0 8px;font-size:20px;letter-spacing:-.03em}
+.work p{color:var(--muted);margin:0;font-size:14px;line-height:1.6}
+
+.process{background:var(--soft)}
+.process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:900px){.process-grid{grid-template-columns:1fr}}
+.step{border:1px solid var(--line);border-radius:20px;padding:24px;background:#fff}
+.step b{display:block;font-size:13px;color:var(--purple);margin-bottom:18px}
+.step h3{margin:0 0 8px}.step p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
+
+.pricing{background:#fff}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.price-grid{grid-template-columns:1fr}}
+.price{background:linear-gradient(180deg,#fff,#fbf9ff);border:1px solid var(--line);border-radius:24px;padding:28px}
+.price h3{font-size:22px;margin:0 0 8px}
+.money{font-size:32px;font-weight:850;margin:14px 0;color:var(--purple)}
+.price ul{list-style:none;padding:0;margin:0}.price li{padding:12px 0;border-top:1px solid var(--line);color:var(--muted)}
+
+.contact{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;text-align:center}
+.contact h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.05em;line-height:1.12;margin:0 0 18px;font-weight:750}
+.contact p{color:rgba(255,255,255,.84);line-height:1.75;margin:0 auto 28px;max-width:590px}
+.contact .btn.secondary{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
+.float-kakao{position:fixed;right:22px;bottom:22px;background:var(--yellow);color:#111;padding:14px 18px;border-radius:999px;font-weight:900;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+footer{padding:32px 0;text-align:center;color:var(--muted);font-size:13px}
+.reveal{opacity:0;transform:translateY(18px);transition:.5s ease}.reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<section class="hero">
-<div>
-<div class="eyebrow">MARKETING & DESIGN PARTNER</div>
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">NOVA<span>.</span>STUDIO<small>CREATIVE MARKETING PARTNER</small></a>
+    <div class="menu">
+      <a href="#services">SERVICE</a><a href="#works">WORKS</a><a href="#process">PROCESS</a><a href="#pricing">PRICE</a><a class="kakao-top" href="#contact">카카오톡 문의</a>
+    </div>
+  </div>
+</nav>
 
-<h1>
-<span class="nova">NOVA STUDIO</span>
-브랜드의 성장을<br>
-설계하는<br>
-마케팅 파트너
-</h1>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="label">MARKETING & DESIGN PARTNER</div>
+      <h1><span class="nova">NOVA STUDIO</span>브랜드의 성장을<br>설계하는<br>마케팅 파트너</h1>
+      <p>마케팅 전략부터 콘텐츠 제작, 디자인, 광고 운영, 홈페이지 제작까지. 브랜드의 성장을 위한 모든 실행을 NOVA STUDIO가 함께합니다.</p>
+      <div class="btns">
+        <a class="btn primary" href="#works">작업 예시 보기 →</a>
+        <a class="btn secondary" href="#contact">상담 문의하기</a>
+      </div>
+    </div>
+    <div class="mock-scene reveal">
+      <div class="laptop"><div class="screen"><div class="screen-head">NOVA STUDIO</div><div class="screen-body"><h3>Marketing<br>Strategy</h3><div class="screen-card-grid"><div class="screen-card"><div class="line mid"></div><div class="line short"></div></div><div class="screen-card"><div class="line mid"></div><div class="line short"></div></div></div></div></div></div>
+      <div class="phone"><div class="phone-inner"><div class="post-img"></div><div class="line mid"></div><div class="line short"></div><div class="post-card"></div></div></div>
+      <div class="deck"><b>Proposal</b><div class="mini-chart"></div><div class="line mid"></div></div>
+    </div>
+  </div>
+</header>
 
-<p class="desc">
-마케팅 전략부터 콘텐츠 제작, 디자인, 광고 운영, 홈페이지 제작까지.
-브랜드의 성장을 위한 모든 실행을 NOVA STUDIO가 함께합니다.
-</p>
+<div class="stats"><div class="wrap stats-grid">
+  <div class="stat"><b>8+</b><p>서비스 카테고리</p></div><div class="stat"><b>1:1</b><p>맞춤 진행</p></div><div class="stat"><b>AI</b><p>효율적 워크플로우</p></div><div class="stat"><b>100%</b><p>목적 중심 구성</p></div>
+</div></div>
 
-<div class="btns">
-<a href="#" class="btn primary">포트폴리오 보기</a>
-<a href="#" class="btn secondary">상담 문의하기</a>
-</div>
-</div>
-
-<div class="mockup">
-실제 노트북·태블릿 목업 자리
-</div>
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head"><div class="label">OUR SERVICES</div><h2>필요한 마케팅 솔루션을 제공합니다</h2><p>작업물만 만드는 것이 아니라, 고객이 이해하고 문의하게 만드는 흐름까지 함께 설계합니다.</p></div>
+    <div class="services-grid">
+      <div class="service reveal"><div class="thumb report"></div><div class="service-body"><h3>사업계획서 · 제안서</h3><p>투자유치, 정부지원사업, 기업 제안에 맞는 문서 구성.</p></div></div>
+      <div class="service reveal"><div class="thumb ppt"></div><div class="service-body"><h3>PPT 디자인</h3><p>핵심 메시지가 잘 보이는 프레젠테이션 디자인.</p></div></div>
+      <div class="service reveal"><div class="thumb web"></div><div class="service-body"><h3>웹사이트 제작</h3><p>브랜드 소개와 문의 전환에 맞춘 랜딩페이지.</p></div></div>
+      <div class="service reveal"><div class="thumb detail"></div><div class="service-body"><h3>상세페이지 디자인</h3><p>구매 포인트와 혜택을 설득력 있게 정리.</p></div></div>
+      <div class="service reveal"><div class="thumb sns"></div><div class="service-body"><h3>SNS 콘텐츠</h3><p>카드뉴스, 이벤트, 후기, 정보성 콘텐츠 제작.</p></div></div>
+      <div class="service reveal"><div class="thumb ad"></div><div class="service-body"><h3>광고 · 배너 디자인</h3><p>네이버, 메타, 인스타그램 광고 소재 제작.</p></div></div>
+      <div class="service reveal"><div class="thumb video"></div><div class="service-body"><h3>영상 편집 · 제작</h3><p>숏폼, 제품 소개, 브랜드 홍보 영상 콘텐츠.</p></div></div>
+      <div class="service reveal"><div class="thumb brand"></div><div class="service-body"><h3>브랜딩 디자인</h3><p>로고, 명함, 브랜드 톤앤매너 구성.</p></div></div>
+    </div>
+  </div>
 </section>
+
+<section class="works" id="works">
+  <div class="wrap">
+    <div class="sec-head"><div class="label">COPYRIGHT-SAFE MOCKUPS</div><h2>저작권 걱정 없는 예시 목업</h2><p>외부 브랜드 이미지를 쓰지 않고 직접 만든 목업 중심으로 구성했습니다.</p></div>
+    <div class="work-grid">
+      <div class="work reveal"><div class="thumb web"></div><div class="work-body"><h3>기업 홈페이지 리뉴얼</h3><p>서비스 소개와 문의 전환 중심 랜딩페이지.</p></div></div>
+      <div class="work reveal"><div class="thumb report"></div><div class="work-body"><h3>투자 제안서 디자인</h3><p>시장 분석, 비즈니스 모델, 성과 계획 구성.</p></div></div>
+      <div class="work reveal"><div class="thumb detail"></div><div class="work-body"><h3>브랜드몰 상세페이지</h3><p>제품 장점과 구매 포인트를 시각화.</p></div></div>
+      <div class="work reveal"><div class="thumb sns"></div><div class="work-body"><h3>SNS 콘텐츠 제작</h3><p>카드뉴스, 이벤트, 후기 콘텐츠 패키지.</p></div></div>
+      <div class="work reveal"><div class="thumb ad"></div><div class="work-body"><h3>광고 배너 캠페인</h3><p>시즌 프로모션용 배너 소재.</p></div></div>
+      <div class="work reveal"><div class="thumb brand"></div><div class="work-body"><h3>브랜드 아이덴티티</h3><p>가상 브랜드 로고와 인쇄물 목업.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head"><div class="label">OUR PROCESS</div><h2>체계적인 프로젝트 진행 과정</h2><p>문의부터 납품까지 필요한 단계를 명확하게 안내합니다.</p></div>
+    <div class="process-grid">
+      <div class="step reveal"><b>01</b><h3>문의 및 상담</h3><p>필요한 작업과 목적을 확인합니다.</p></div>
+      <div class="step reveal"><b>02</b><h3>전략 및 기획</h3><p>메시지와 구성 방향을 정리합니다.</p></div>
+      <div class="step reveal"><b>03</b><h3>디자인 및 제작</h3><p>콘텐츠와 디자인을 제작합니다.</p></div>
+      <div class="step reveal"><b>04</b><h3>검수 및 피드백</h3><p>수정 사항을 반영합니다.</p></div>
+      <div class="step reveal"><b>05</b><h3>최종 전달</h3><p>최종 파일을 전달합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="sec-head"><div class="label">PRICE GUIDE</div><h2>작업 범위별 시작가</h2><p>분량과 자료 제공 여부에 따라 실제 견적은 달라질 수 있습니다.</p></div>
+    <div class="price-grid">
+      <div class="price"><h3>콘텐츠 제작</h3><div class="money">30,000원~</div><ul><li>SNS 카드뉴스</li><li>광고 배너</li><li>간단 카피 정리</li></ul></div>
+      <div class="price"><h3>문서 디자인</h3><div class="money">100,000원~</div><ul><li>PPT 디자인</li><li>사업계획서</li><li>제안서</li></ul></div>
+      <div class="price"><h3>마케팅 패키지</h3><div class="money">상담 후 견적</div><ul><li>콘텐츠 월 운영</li><li>상세페이지</li><li>광고 소재 제작</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>브랜드에 필요한 일을<br>함께 정리해볼까요?</h2>
+    <p>필요한 작업이 명확하지 않아도 괜찮습니다. 현재 상황과 원하는 방향을 알려주시면 가능한 범위부터 정리해드립니다.</p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn kakao" href="https://open.kakao.com/o/여기에오픈채팅코드" target="_blank">카카오톡 문의</a>
+      <a class="btn secondary" href="mailto:yeoni_39@nate.com">이메일 문의</a>
+    </div>
+  </div>
+</section>
+
+<a class="float-kakao" href="https://open.kakao.com/o/여기에오픈채팅코드" target="_blank">💬 문의</a>
+<footer>NOVA STUDIO · Creative Marketing Partner · © 2026</footer>
+<script>
+const obs=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
