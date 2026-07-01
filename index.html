@@ -275,15 +275,14 @@ section{padding:92px 0}.sec-head{display:flex;justify-content:space-between;gap:
   content:'총 조회수\A128,540';
   white-space:pre;
   position:absolute;
-  inset:30px;
-  display:flex;
+  inset:44px;
+  display:grid;
   place-items:center;
-  justify-content:center;
   border-radius:50%;
   background:#fff;
   color:#17131d;
-  font-size:15px;
-  line-height:1.35;
+  font-size:17px;
+  line-height:1.45;
   text-align:center;
   font-weight:950;
 }
@@ -362,16 +361,67 @@ section{padding:92px 0}.sec-head{display:flex;justify-content:space-between;gap:
   .photo2-dashboard .dash-chart{height:180px;gap:14px}
   .photo2-dashboard .donut-wrap{flex-direction:column}
 }
+
+/* donut center fixed text */
+.photo2-dashboard .donut:after,
+.donut:after{
+  content:none !important;
+  display:none !important;
+}
+.photo2-dashboard .donut{
+  position:relative !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.photo2-dashboard .donut-center{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:112px !important;
+  height:112px !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  z-index:20 !important;
+  overflow:hidden !important;
+}
+.photo2-dashboard .donut-center span{
+  display:block !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  line-height:1.1 !important;
+  white-space:nowrap !important;
+  color:#17131d !important;
+}
+.photo2-dashboard .donut-center strong{
+  display:block !important;
+  margin-top:5px !important;
+  font-size:16px !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  white-space:nowrap !important;
+  color:#17131d !important;
+}
+@media(max-width:1280px){
+  .photo2-dashboard .donut-center{
+    width:94px !important;
+    height:94px !important;
+  }
+  .photo2-dashboard .donut-center span{font-size:11px !important}
+  .photo2-dashboard .donut-center strong{font-size:14px !important}
+}
+
 </style>
 </head>
 <body>
 <nav class="nav"><div class="wrap nav-inner"><a class="logo" href="#top">NOVA <span>STUDIO</span></a><div class="nav-links"><a href="#about">About</a><a href="#services">Service</a><a href="#works">Portfolio</a><a href="#process">Process</a><a href="#contact">Contact</a></div><a class="nav-cta" href="#contact">문의하기&nbsp; →</a></div></nav>
-<header class="hero" id="top"><div class="wrap hero-grid"><div class="hero-copy"><div class="badge">Creative Marketing Agency</div><h1 class="portfolio-title">MARKETING<br>PORTFOLIO</h1><div class="studio-script grad">NOVA STUDIO</div><p>전략부터 콘텐츠 제작, 광고 운영까지<br>브랜드의 성장을 위한 마케팅 솔루션을 제공합니다.</p><div class="actions"><a class="btn btn-primary" href="#works">포트폴리오 보기 ↗</a><a class="btn btn-outline" href="#services">서비스 소개 ↗</a></div></div><div class="agency-board dashboard-board photo2-dashboard reveal"><div class="browser"><div class="browser-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="dashboard-ui"><div class="dash-kpis"><div class="dash-kpi"><span>총 프로젝트</span><b>24</b><em>↑ 12%</em></div><div class="dash-kpi"><span>진행 중 캠페인</span><b>8</b><em class="blue">↑ 25%</em></div><div class="dash-kpi"><span>총 조회수</span><b>128,540</b><em>↑ 18%</em></div><div class="dash-kpi"><span>전환율</span><b>3.24%</b><em>↑ 8%</em></div></div><div class="dash-main"><div class="dash-panel performance-panel"><div class="dash-title">채널별 성과 <small>월간⌄</small></div><div class="dash-chart"><div class="dash-bar" style="height:50%" data-v="24,500"></div><div class="dash-bar" style="height:72%" data-v="36,800"></div><div class="dash-bar" style="height:56%" data-v="28,100"></div><div class="dash-bar" style="height:86%" data-v="42,300"></div><div class="dash-bar" style="height:62%" data-v="31,200"></div></div><div class="dash-labels"><span>SNS</span><span>SEO</span><span>상세페이지</span><span>PPT</span><span>광고 (Ads)</span></div></div><div class="dash-panel share-panel"><div class="dash-title">채널별 비중</div><div class="donut-wrap"><div class="donut">
-
-
-  </div>
-
-</div></i>SNS <b>19.0%</b></span><span><i class="lg2"></i>SEO <b>28.6%</b></span><span><i class="lg3"></i>상세페이지 <b>21.8%</b></span><span><i class="lg4"></i>PPT <b>19.6%</b></span><span><i class="lg5"></i>광고 (Ads) <b>11.0%</b></span></div></div></div></div></div></div></div></div></header>
+<header class="hero" id="top"><div class="wrap hero-grid"><div class="hero-copy"><div class="badge">Creative Marketing Agency</div><h1 class="portfolio-title">MARKETING<br>PORTFOLIO</h1><div class="studio-script grad">NOVA STUDIO</div><p>전략부터 콘텐츠 제작, 광고 운영까지<br>브랜드의 성장을 위한 마케팅 솔루션을 제공합니다.</p><div class="actions"><a class="btn btn-primary" href="#works">포트폴리오 보기 ↗</a><a class="btn btn-outline" href="#services">서비스 소개 ↗</a></div></div><div class="agency-board dashboard-board photo2-dashboard reveal"><div class="browser"><div class="browser-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="dashboard-ui"><div class="dash-kpis"><div class="dash-kpi"><span>총 프로젝트</span><b>24</b><em>↑ 12%</em></div><div class="dash-kpi"><span>진행 중 캠페인</span><b>8</b><em class="blue">↑ 25%</em></div><div class="dash-kpi"><span>총 조회수</span><b>128,540</b><em>↑ 18%</em></div><div class="dash-kpi"><span>전환율</span><b>3.24%</b><em>↑ 8%</em></div></div><div class="dash-main"><div class="dash-panel performance-panel"><div class="dash-title">채널별 성과 <small>월간⌄</small></div><div class="dash-chart"><div class="dash-bar" style="height:50%" data-v="24,500"></div><div class="dash-bar" style="height:72%" data-v="36,800"></div><div class="dash-bar" style="height:56%" data-v="28,100"></div><div class="dash-bar" style="height:86%" data-v="42,300"></div><div class="dash-bar" style="height:62%" data-v="31,200"></div></div><div class="dash-labels"><span>SNS</span><span>SEO</span><span>상세페이지</span><span>PPT</span><span>광고 (Ads)</span></div></div><div class="dash-panel share-panel"><div class="dash-title">채널별 비중</div><div class="donut-wrap"><div class="donut"><div class="donut-center"><span>총 조회수</span><strong>128,540</strong></div></div><div class="legend"><span><i class="lg1"></i>SNS <b>19.0%</b></span><span><i class="lg2"></i>SEO <b>28.6%</b></span><span><i class="lg3"></i>상세페이지 <b>21.8%</b></span><span><i class="lg4"></i>PPT <b>19.6%</b></span><span><i class="lg5"></i>광고 (Ads) <b>11.0%</b></span></div></div></div></div></div></div></div></div></header>
 <div class="marquee brand-marquee"><div class="marquee-track"><span>SAMSUNG</span><b>·</b><span>LG</span><b>·</b><span>coupang</span><b>·</b><span>MUSINSA</span><b>·</b><span>KAKAO</span><b>·</b><span>SAMSUNG</span><b>·</b><span>LG</span><b>·</b><span>coupang</span><b>·</b><span>MUSINSA</span><b>·</b><span>KAKAO</span></div></div>
 <section class="services" id="services"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Services</div><h2>마케팅에 필요한<br>모든일을 진행합니다.</h2></div><p></p></div><div class="service-grid"><div class="service reveal"><div class="icon">📊</div><h3>마케팅 전략</h3><p>시장, 타겟, 메시지, 콘텐츠 흐름을 정리해 실행 가능한 방향을 잡습니다.</p></div><div class="service reveal"><div class="icon">📢</div><h3>광고 소재 · 운영</h3><p>네이버, 메타, 인스타그램 등 목적에 맞는 소재와 캠페인 구조를 기획합니다.</p></div><div class="service reveal"><div class="icon">🔎</div><h3>SEO · 블로그</h3><p>키워드와 검색 흐름을 고려해 꾸준한 유입을 만드는 콘텐츠를 설계합니다.</p></div><div class="service reveal"><div class="icon">🧩</div><h3>SNS 콘텐츠</h3><p>카드뉴스, 이벤트, 후기, 정보성 콘텐츠 등 채널별 콘텐츠를 제작합니다.</p></div><div class="service reveal"><div class="icon">🛒</div><h3>상세페이지</h3><p>제품의 장점, 후기, 혜택, 구매 포인트를 전환 중심 구조로 정리합니다.</p></div><div class="service reveal"><div class="icon">💻</div><h3>웹사이트</h3><p>브랜드 소개, 서비스 안내, 문의 전환에 적합한 랜딩페이지를 구성합니다.</p></div><div class="service reveal"><div class="icon">📑</div><h3>PPT · 제안서</h3><p>사업계획서, 제안서, 회사소개서 등 목적에 맞는 문서를 디자인합니다.</p></div><div class="service reveal"><div class="icon">✨</div><h3>사진 보정</h3><p>인물, 제품, 배경, 색감 등 브랜드 톤에 맞게 자연스럽게 보정합니다.</p></div></div></div></section>
 <section class="system"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Agency System</div><h2>브랜딩 전략을 위한<br>실행시스템.</h2></div><p></p></div><div class="system-grid"><div class="system-card reveal"><b>01</b><h3>브랜드 진단</h3><p>현재 채널, 고객, 콘텐츠, 경쟁 환경을 확인하고 우선순위를 정리합니다.</p></div><div class="system-card reveal"><b>02</b><h3>실행물 제작</h3><p>광고 소재, SNS, 상세페이지, 문서 등 필요한 결과물을 일관된 톤으로 제작합니다.</p></div><div class="system-card reveal"><b>03</b><h3>성과 개선</h3><p>반응이 좋은 메시지와 콘텐츠를 기준으로 다음 액션을 제안합니다.</p></div></div></div></section>
