@@ -417,47 +417,171 @@ section{padding:92px 0}.sec-head{display:flex;justify-content:space-between;gap:
   .photo2-dashboard .donut-center strong{font-size:14px !important}
 }
 
+
+/* final share panel layout fix */
+.photo2-dashboard .share-panel{
+  overflow:hidden !important;
+}
+.photo2-dashboard .share-panel .donut-wrap{
+  display:grid !important;
+  grid-template-columns:178px minmax(120px,1fr) !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:24px !important;
+  min-height:250px !important;
+}
+.photo2-dashboard .donut:after,
+.donut:after{
+  content:none !important;
+  display:none !important;
+}
+.photo2-dashboard .donut{
+  width:178px !important;
+  height:178px !important;
+  min-width:178px !important;
+  border-radius:50% !important;
+  position:relative !important;
+  flex:0 0 178px !important;
+  background:conic-gradient(#6c4dff 0 19%, #ff6fb1 19% 47.6%, #43d6a8 47.6% 69.4%, #ffd34d 69.4% 89%, #38a5ff 89% 100%) !important;
+}
+.photo2-dashboard .donut-center{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:98px !important;
+  height:98px !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  z-index:20 !important;
+  overflow:hidden !important;
+}
+.photo2-dashboard .donut-center span{
+  display:block !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  line-height:1.1 !important;
+  white-space:nowrap !important;
+  color:#17131d !important;
+}
+.photo2-dashboard .donut-center strong{
+  display:block !important;
+  margin-top:5px !important;
+  font-size:16px !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  white-space:nowrap !important;
+  color:#17131d !important;
+}
+.photo2-dashboard .legend{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:12px !important;
+  min-width:126px !important;
+  margin:0 !important;
+  padding:0 !important;
+  color:#5e566e !important;
+  font-size:12px !important;
+  font-weight:850 !important;
+}
+.photo2-dashboard .legend span{
+  display:grid !important;
+  grid-template-columns:10px 1fr auto !important;
+  align-items:center !important;
+  gap:8px !important;
+  white-space:nowrap !important;
+}
+.photo2-dashboard .legend i{
+  display:block !important;
+  width:9px !important;
+  height:9px !important;
+  border-radius:3px !important;
+  margin:0 !important;
+}
+.photo2-dashboard .legend em{
+  display:block !important;
+  font-style:normal !important;
+  font-size:12px !important;
+  font-weight:850 !important;
+}
+.photo2-dashboard .legend b{
+  display:block !important;
+  font-size:12px !important;
+  font-weight:850 !important;
+  color:#4f4960 !important;
+}
+@media(max-width:1280px){
+  .photo2-dashboard .share-panel .donut-wrap{
+    grid-template-columns:150px !important;
+    justify-items:center !important;
+    gap:14px !important;
+  }
+  .photo2-dashboard .donut{
+    width:150px !important;
+    height:150px !important;
+    min-width:150px !important;
+    flex-basis:150px !important;
+  }
+  .photo2-dashboard .donut-center{
+    width:86px !important;
+    height:86px !important;
+  }
+  .photo2-dashboard .legend{
+    display:none !important;
+  }
+}
+@media(max-width:920px){
+  .photo2-dashboard .share-panel .donut-wrap{
+    grid-template-columns:178px minmax(120px,1fr) !important;
+    justify-items:stretch !important;
+  }
+  .photo2-dashboard .donut{
+    width:178px !important;
+    height:178px !important;
+    min-width:178px !important;
+    flex-basis:178px !important;
+  }
+  .photo2-dashboard .legend{
+    display:grid !important;
+  }
+}
+@media(max-width:640px){
+  .photo2-dashboard .share-panel .donut-wrap{
+    grid-template-columns:1fr !important;
+    justify-items:center !important;
+  }
+}
+
 </style>
 </head>
 <body>
 <nav class="nav"><div class="wrap nav-inner"><a class="logo" href="#top">NOVA <span>STUDIO</span></a><div class="nav-links"><a href="#about">About</a><a href="#services">Service</a><a href="#works">Portfolio</a><a href="#process">Process</a><a href="#contact">Contact</a></div><a class="nav-cta" href="#contact">문의하기&nbsp; →</a></div></nav>
-<header class="hero" id="top"><div class="wrap hero-grid"><div class="hero-copy"><div class="badge">Creative Marketing Agency</div><h1 class="portfolio-title">MARKETING<br>PORTFOLIO</h1><div class="studio-script grad">NOVA STUDIO</div><p>전략부터 콘텐츠 제작, 광고 운영까지<br>브랜드의 성장을 위한 마케팅 솔루션을 제공합니다.</p><div class="actions"><a class="btn btn-primary" href="#works">포트폴리오 보기 ↗</a><a class="btn btn-outline" href="#services">서비스 소개 ↗</a></div></div><div class="agency-board dashboard-board photo2-dashboard reveal"><div class="browser"><div class="browser-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="dashboard-ui"><div class="dash-kpis"><div class="dash-kpi"><span>총 프로젝트</span><b>24</b><em>↑ 12%</em></div><div class="dash-kpi"><span>진행 중 캠페인</span><b>8</b><em class="blue">↑ 25%</em></div><div class="dash-kpi"><span>총 조회수</span><b>128,540</b><em>↑ 18%</em></div><div class="dash-kpi"><span>전환율</span><b>3.24%</b><em>↑ 8%</em></div></div><div class="dash-main"><div class="dash-panel performance-panel"><div class="dash-title">채널별 성과 <small>월간⌄</small></div><div class="dash-chart"><div class="dash-bar" style="height:50%" data-v="24,500"></div><div class="dash-bar" style="height:72%" data-v="36,800"></div><div class="dash-bar" style="height:56%" data-v="28,100"></div><div class="dash-bar" style="height:86%" data-v="42,300"></div><div class="dash-bar" style="height:62%" data-v="31,200"></div></div><div class="dash-labels"><span></span><span>SEO</span><span>상세페이지</span><span>PPT</span><span>광고 (Ads)</span></div></div><div class="dash-panel share-panel">
-
+<header class="hero" id="top"><div class="wrap hero-grid"><div class="hero-copy"><div class="badge">Creative Marketing Agency</div><h1 class="portfolio-title">MARKETING<br>PORTFOLIO</h1><div class="studio-script grad">NOVA STUDIO</div><p>전략부터 콘텐츠 제작, 광고 운영까지<br>브랜드의 성장을 위한 마케팅 솔루션을 제공합니다.</p><div class="actions"><a class="btn btn-primary" href="#works">포트폴리오 보기 ↗</a><a class="btn btn-outline" href="#services">서비스 소개 ↗</a></div></div><div class="agency-board dashboard-board photo2-dashboard reveal"><div class="browser"><div class="browser-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="dashboard-ui"><div class="dash-kpis"><div class="dash-kpi"><span>총 프로젝트</span><b>24</b><em>↑ 12%</em></div><div class="dash-kpi"><span>진행 중 캠페인</span><b>8</b><em class="blue">↑ 25%</em></div><div class="dash-kpi"><span>총 조회수</span><b>128,540</b><em>↑ 18%</em></div><div class="dash-kpi"><span>전환율</span><b>3.24%</b><em>↑ 8%</em></div></div><div class="dash-main"><div class="dash-panel performance-panel"><div class="dash-title">채널별 성과 <small>월간⌄</small></div><div class="dash-chart"><div class="dash-bar" style="height:50%" data-v="24,500"></div><div class="dash-bar" style="height:72%" data-v="36,800"></div><div class="dash-bar" style="height:56%" data-v="28,100"></div><div class="dash-bar" style="height:86%" data-v="42,300"></div><div class="dash-bar" style="height:62%" data-v="31,200"></div></div><div class="dash-labels"><span>SNS</span><span>SEO</span><span>상세페이지</span><span>PPT</span><span>광고 (Ads)</span></div></div><div class="dash-panel share-panel">
   <div class="dash-title">채널별 비중</div>
-
   <div class="donut-wrap">
-
     <div class="donut">
-
       <div class="donut-center">
-
         <span>총 조회수</span>
-
         <strong>128,540</strong>
-
       </div>
-
     </div>
-
     <div class="legend">
-
-      <span><i class="lg1"></i>SNS <b>19.0%</b></span>
-
-      <span><i class="lg2"></i>SEO <b>28.6%</b></span>
-
-      <span><i class="lg3"></i>상세페이지 <b>21.8%</b></span>
-
-      <span><i class="lg4"></i>PPT <b>19.6%</b></span>
-
-      <span><i class="lg5"></i>광고 (Ads) <b>11.0%</b></span>
-
+      <span><i class="lg1"></i><em>SNS</em><b>19.0%</b></span>
+      <span><i class="lg2"></i><em>SEO</em><b>28.6%</b></span>
+      <span><i class="lg3"></i><em>상세페이지</em><b>21.8%</b></span>
+      <span><i class="lg4"></i><em>PPT</em><b>19.6%</b></span>
+      <span><i class="lg5"></i><em>광고 (Ads)</em><b>11.0%</b></span>
     </div>
-
   </div>
-
-</div>
-<section class="services" id="services"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Services</div><h2>마케팅에 필요한<br>모든일을 진행합니다.</h2></div><p></p></div><div class="service-grid"><div class="service reveal"><div class="icon">📊</div><h3>마케팅 전략</h3><p>시장, 타겟, 메시지, 콘텐츠 흐름을 정리해 실행 가능한 방향을 잡습니다.</p></div><div class="service reveal"><div class="icon">📢</div><h3>광고 소재 · 운영</h3><p>네이버, 메타, 인스타그램 등 목적에 맞는 소재와 캠페인 구조를 기획합니다.</p></div><div class="service reveal"><div class="icon">🔎</div><h3>SEO · 블로그</h3><p>키워드와 검색 흐름을 고려해 꾸준한 유입을 만드는 콘텐츠를 설계합니다.</p></div><div class="service reveal"><div class="icon">🧩</div><h3> 콘텐츠</h3><p>카드뉴스, 이벤트, 후기, 정보성 콘텐츠 등 채널별 콘텐츠를 제작합니다.</p></div><div class="service reveal"><div class="icon">🛒</div><h3>상세페이지</h3><p>제품의 장점, 후기, 혜택, 구매 포인트를 전환 중심 구조로 정리합니다.</p></div><div class="service reveal"><div class="icon">💻</div><h3>웹사이트</h3><p>브랜드 소개, 서비스 안내, 문의 전환에 적합한 랜딩페이지를 구성합니다.</p></div><div class="service reveal"><div class="icon">📑</div><h3>PPT · 제안서</h3><p>사업계획서, 제안서, 회사소개서 등 목적에 맞는 문서를 디자인합니다.</p></div><div class="service reveal"><div class="icon">✨</div><h3>사진 보정</h3><p>인물, 제품, 배경, 색감 등 브랜드 톤에 맞게 자연스럽게 보정합니다.</p></div></div></div></section>
-<section class="system"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Agency System</div><h2>브랜딩 전략을 위한<br>실행시스템.</h2></div><p></p></div><div class="system-grid"><div class="system-card reveal"><b>01</b><h3>브랜드 진단</h3><p>현재 채널, 고객, 콘텐츠, 경쟁 환경을 확인하고 우선순위를 정리합니다.</p></div><div class="system-card reveal"><b>02</b><h3>실행물 제작</h3><p>광고 소재, , 상세페이지, 문서 등 필요한 결과물을 일관된 톤으로 제작합니다.</p></div><div class="system-card reveal"><b>03</b><h3>성과 개선</h3><p>반응이 좋은 메시지와 콘텐츠를 기준으로 다음 액션을 제안합니다.</p></div></div></div></section>
+</div></div></div></div></div></div></div></div></header>
+<div class="marquee brand-marquee"><div class="marquee-track"><span>SAMSUNG</span><b>·</b><span>LG</span><b>·</b><span>coupang</span><b>·</b><span>MUSINSA</span><b>·</b><span>KAKAO</span><b>·</b><span>SAMSUNG</span><b>·</b><span>LG</span><b>·</b><span>coupang</span><b>·</b><span>MUSINSA</span><b>·</b><span>KAKAO</span></div></div>
+<section class="services" id="services"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Services</div><h2>마케팅에 필요한<br>모든일을 진행합니다.</h2></div><p></p></div><div class="service-grid"><div class="service reveal"><div class="icon">📊</div><h3>마케팅 전략</h3><p>시장, 타겟, 메시지, 콘텐츠 흐름을 정리해 실행 가능한 방향을 잡습니다.</p></div><div class="service reveal"><div class="icon">📢</div><h3>광고 소재 · 운영</h3><p>네이버, 메타, 인스타그램 등 목적에 맞는 소재와 캠페인 구조를 기획합니다.</p></div><div class="service reveal"><div class="icon">🔎</div><h3>SEO · 블로그</h3><p>키워드와 검색 흐름을 고려해 꾸준한 유입을 만드는 콘텐츠를 설계합니다.</p></div><div class="service reveal"><div class="icon">🧩</div><h3>SNS 콘텐츠</h3><p>카드뉴스, 이벤트, 후기, 정보성 콘텐츠 등 채널별 콘텐츠를 제작합니다.</p></div><div class="service reveal"><div class="icon">🛒</div><h3>상세페이지</h3><p>제품의 장점, 후기, 혜택, 구매 포인트를 전환 중심 구조로 정리합니다.</p></div><div class="service reveal"><div class="icon">💻</div><h3>웹사이트</h3><p>브랜드 소개, 서비스 안내, 문의 전환에 적합한 랜딩페이지를 구성합니다.</p></div><div class="service reveal"><div class="icon">📑</div><h3>PPT · 제안서</h3><p>사업계획서, 제안서, 회사소개서 등 목적에 맞는 문서를 디자인합니다.</p></div><div class="service reveal"><div class="icon">✨</div><h3>사진 보정</h3><p>인물, 제품, 배경, 색감 등 브랜드 톤에 맞게 자연스럽게 보정합니다.</p></div></div></div></section>
+<section class="system"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Agency System</div><h2>브랜딩 전략을 위한<br>실행시스템.</h2></div><p></p></div><div class="system-grid"><div class="system-card reveal"><b>01</b><h3>브랜드 진단</h3><p>현재 채널, 고객, 콘텐츠, 경쟁 환경을 확인하고 우선순위를 정리합니다.</p></div><div class="system-card reveal"><b>02</b><h3>실행물 제작</h3><p>광고 소재, SNS, 상세페이지, 문서 등 필요한 결과물을 일관된 톤으로 제작합니다.</p></div><div class="system-card reveal"><b>03</b><h3>성과 개선</h3><p>반응이 좋은 메시지와 콘텐츠를 기준으로 다음 액션을 제안합니다.</p></div></div></div></section>
 <section class="works" id="works"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Copyright-safe Mockups</div><h2><br>프로젝트 예시.</h2></div><p></p></div><div class="work-list"><div class="work reveal"><div class="work-info"><div class="num">01</div><h3>LUMINA Beauty</h3><p>스킨케어 브랜드 SNS·상세페이지·광고 소재 패키지입니다. 자연 유래, 민감 피부, 첫 구매 혜택 메시지를 중심으로 구성했습니다.</p><div class="work-meta"><span>SNS</span><span>Detail Page</span><span>Ad Creative</span></div></div><div class="work-visual"><div class="device"><div class="device-head"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="device-body"><div class="mock-hero"><h4>Pure Skin<br>Routine</h4><div class="mock-line w2" style="background:rgba(255,255,255,.65)"></div></div><div class="mock-card-grid"><div class="mock-card"><div class="pic"></div><div class="mock-line w1"></div><div class="mock-line w2"></div></div><div class="mock-card"><div class="pic"></div><div class="mock-line w1"></div><div class="mock-line w3"></div></div><div class="mock-card"><div class="pic"></div><div class="mock-line w1"></div><div class="mock-line w2"></div></div></div></div></div></div></div><div class="work reveal"><div class="work-info"><div class="num">02</div><h3>MOOD BASIC</h3><p>의류 브랜드 카드뉴스와 상품 상세 콘텐츠입니다. 핏, 소재, 스타일링, 후기 흐름을 보기 쉽게 정리했습니다.</p><div class="work-meta"><span>Card News</span><span>Product Page</span><span>Review Contents</span></div></div><div class="work-visual"><div class="mock-sns"><div class="post"><div class="img"></div><h4>Daily Fit</h4><p></p><p></p></div><div class="post"><div class="img"></div><h4>New Color</h4><p></p><p></p></div><div class="post"><div class="img"></div><h4>Review</h4><p></p><p></p></div></div></div></div><div class="work reveal"><div class="work-info"><div class="num">03</div><h3>IR · Proposal Deck</h3><p>사업계획서와 제안서 입니다. 시장 분석, 서비스 소개, 매출 계획, 기대효과를 시각적으로 전달하는 구성을 보여줍니다.</p><div class="work-meta"><span>Business Plan</span><span>PPT</span><span>Proposal</span></div></div><div class="work-visual"><div class="mock-doc"><div class="doc"><h4>Business Plan</h4><div class="graph"></div><div class="mock-line w1"></div><div class="mock-line w2"></div></div><div class="doc"><h4>Market Chart</h4><div class="graph"></div><div class="mock-line w1"></div><div class="mock-line w3"></div></div><div class="doc"><h4>Strategy</h4><div class="graph"></div><div class="mock-line w1"></div><div class="mock-line w2"></div></div></div></div></div></div></div></section>
 <section class="process" id="process"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Process</div><h2>문의부터 납품까지<br>명확하게 진행합니다.</h2></div></div><div class="steps"><div class="step reveal"><span>01</span><h3>문의</h3><p>필요한 작업과 목적을 간단히 확인합니다.</p></div><div class="step reveal"><span>02</span><h3>상담</h3><p>예산, 일정, 방향성, 필요한 자료를 정리합니다.</p></div><div class="step reveal"><span>03</span><h3>기획</h3><p>구성안과 메시지 흐름을 먼저 잡습니다.</p></div><div class="step reveal"><span>04</span><h3>제작</h3><p>디자인, 콘텐츠, 광고 소재를 제작합니다.</p></div><div class="step reveal"><span>05</span><h3>전달</h3><p>확인 후 수정 및 최종 파일을 전달합니다.</p></div></div></div></section>
 <section class="pricing" id="pricing"><div class="wrap"><div class="sec-head reveal"><div><div class="eyebrow">Price Guide</div><h2>작업 범위에 따라<br>유연하게 진행합니다.</h2></div><p>아래 금액은 시작가 예시입니다. 실제 견적은 분량, 자료 제공 여부, 수정 범위에 따라 달라질 수 있습니다.</p></div><div class="price-grid"><div class="price reveal"><h3>콘텐츠 제작</h3><div class="from">SNS · 카드뉴스 · 배너</div><div class="money">30,000원~</div><ul><li>카드뉴스 / 피드 디자인</li><li>광고 배너</li><li>간단 카피 정리</li></ul></div><div class="price reveal"><h3>문서 디자인</h3><div class="from">PPT · 제안서 · 사업계획서</div><div class="money">100,000원~</div><ul><li>레이아웃 정리</li><li>표 / 그래프 시각화</li><li>목적별 구성 보완</li></ul></div><div class="price reveal"><h3>마케팅 패키지</h3><div class="from">기획 · 디자인 · 운영</div><div class="money">상담 후 견적</div><ul><li>콘텐츠 월 운영</li><li>상세페이지 / 랜딩</li><li>광고 소재 및 운영</li></ul></div></div><p class="note">※ 실제 계약 전 세부 범위와 일정 확인 후 견적을 안내드립니다.</p></div></section>
