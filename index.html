@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA STUDIO — Creative Marketing Partner</title>
-<meta name="description" content="NOVA STUDIO | 마케팅 전략, 콘텐츠, 디자인, 광고 소재, 상세페이지, PPT, 웹사이트까지 함께하는 크리에이티브 마케팅 파트너.">
+<title>NOVA STUDIO — Marketing Consultant</title>
+<meta name="description" content="NOVA STUDIO | 마케팅 컨설턴트. 사업계획서, PPT, SNS·콘텐츠, 상세페이지, 광고, 영상까지 전방위 마케팅 파트너.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
@@ -897,189 +897,49 @@
   }
   .reveal.in{ opacity:1; transform:translateY(0); }
 
-/* ========== NOVA STUDIO 2.0 PATCH ========== */
-:root{
-  --accent:#6c4dff;
-  --accent-2:#a78bfa;
-  --accent-soft:#f4f0ff;
-  --surface:#f7f4ff;
-  --line:#e8e1ff;
-  --ink:#1d1a27;
-  --ink-soft:#625d70;
-  --line-strong:#1d1a27;
+/* ========== NOVA STUDIO 2.0 SAFE PATCH: HERO ONLY ========== */
+.hero h1.hero-title{
+  text-transform:none;
+  font-weight:650;
+  font-size:clamp(42px, 6vw, 82px);
+  line-height:1.18;
+  letter-spacing:-0.045em;
+  margin:0;
 }
-.nav{
-  box-shadow:0 10px 30px rgba(108,77,255,0.05);
-}
-.nav-brand{
-  font-weight:900;
-  letter-spacing:-0.035em;
-}
-.hero{
-  background:
-    radial-gradient(circle at 82% 18%, rgba(108,77,255,.15), transparent 34%),
-    radial-gradient(circle at 20% 90%, rgba(167,139,250,.15), transparent 28%),
-    linear-gradient(180deg,#fff 0%,#fbf9ff 100%);
-  padding:138px 0 86px;
-}
-.hero .wrap{
-  display:grid;
-  grid-template-columns:minmax(0, .95fr) minmax(360px, 1.05fr);
-  gap:54px;
-  align-items:center;
-}
-.hero-copy{
-  margin-bottom:0;
-  padding-left:0;
-}
-.hero-title{
-  text-transform:none !important;
-  font-weight:650 !important;
-  font-size:clamp(42px, 5.7vw, 78px) !important;
-  line-height:1.16 !important;
-  letter-spacing:-0.045em !important;
-}
-.hero-nova{
+.hero-brand-title{
   display:block;
   color:var(--accent);
-  font-size:clamp(29px,3.2vw,43px);
+  font-size:clamp(30px, 3.3vw, 44px);
+  line-height:1.12;
   font-weight:850;
-  line-height:1.1;
   letter-spacing:-0.025em;
   margin-bottom:18px;
 }
 .hero-name-note{
-  margin:24px 0 18px !important;
-  color:var(--accent) !important;
-  font-style:normal !important;
-  font-weight:800;
-  letter-spacing:.05em;
+  font-style:normal;
+  letter-spacing:.04em;
   text-transform:uppercase;
-}
-.hero-tagline{
-  font-size:clamp(18px, 2vw, 22px);
-  font-weight:750;
+  color:var(--accent);
+  font-weight:700;
 }
 .hero-desc{
-  max-width:590px;
   line-height:1.78;
-  font-size:16px;
 }
-.hero::after{
-  content:"";
-  display:block;
-  width:min(520px, 41vw);
-  height:430px;
-  position:absolute;
-  right:calc((100vw - min(var(--wrap), 100vw))/2 + 48px);
-  top:134px;
-  border-radius:34px;
+.hero{
   background:
-    linear-gradient(#fff,#fff) padding-box,
-    linear-gradient(135deg,rgba(108,77,255,.7),rgba(167,139,250,.2)) border-box;
-  border:1px solid transparent;
-  box-shadow:0 30px 80px rgba(108,77,255,.14);
-  pointer-events:none;
-}
-.hero::before{
-  content:"NOVA\\A MARKETING\\A SYSTEM";
-  white-space:pre;
-  position:absolute;
-  right:calc((100vw - min(var(--wrap), 100vw))/2 + 88px);
-  top:178px;
-  width:min(430px, 34vw);
-  height:330px;
-  border-radius:26px;
-  background:
-    linear-gradient(135deg, rgba(108,77,255,.92), rgba(167,139,250,.85));
-  color:#fff;
-  font-size:44px;
-  line-height:1.03;
-  letter-spacing:-.04em;
-  font-weight:850;
-  padding:36px;
-  box-shadow:0 28px 60px rgba(108,77,255,.2);
-  pointer-events:none;
-  z-index:1;
-}
-.hero-actions{position:relative; z-index:2;}
-.hero-copy{position:relative; z-index:3;}
-.hero .wrap::after{
-  content:"SNS · AD · PPT · WEB · DETAIL";
-  position:absolute;
-  right:88px;
-  bottom:24px;
-  z-index:2;
-  width:280px;
-  padding:18px 20px;
-  border-radius:18px;
-  background:#fff;
-  border:1px solid var(--line);
-  color:var(--accent);
-  font-size:13px;
-  font-weight:850;
-  box-shadow:0 18px 40px rgba(108,77,255,.13);
+    radial-gradient(circle at 82% 15%, rgba(108,77,255,.10), transparent 32%),
+    radial-gradient(circle at 14% 90%, rgba(167,139,250,.12), transparent 28%),
+    var(--bg);
 }
 .btn-primary{
-  border-color:var(--accent);
   background:var(--accent);
+  border-color:var(--accent);
 }
 .btn-primary:hover{
   background:var(--ink);
   border-color:var(--ink);
 }
-.btn-outline{
-  background:#fff;
-  border-color:var(--line-strong);
-}
-.sec-head h2{
-  letter-spacing:-0.035em;
-}
-.svc-card{
-  text-align:left;
-  border-radius:20px;
-  overflow:hidden;
-  padding:0 0 20px;
-  box-shadow:0 10px 30px rgba(108,77,255,.05);
-}
-.svc-photo{
-  height:145px;
-  border-radius:0;
-  margin:0 0 18px;
-}
-.svc-card h3{
-  padding:0 18px;
-  font-size:15.5px;
-}
-.pf-photo{
-  height:220px;
-  box-shadow:0 14px 36px rgba(108,77,255,.08);
-}
-.price-row{
-  background:#fff;
-  margin-bottom:10px;
-  padding:20px 22px;
-  border:1px solid var(--line) !important;
-  border-radius:16px;
-}
-.contact{
-  background:linear-gradient(135deg,#fff 0%,#f7f4ff 100%);
-}
-.contact-links .btn:first-child{
-  display:none;
-}
-@media (max-width:980px){
-  .hero .wrap{grid-template-columns:1fr}
-  .hero::before,.hero::after,.hero .wrap::after{display:none}
-}
-@media (max-width:760px){
-  .hero-title{
-    font-size:clamp(38px, 11vw, 56px) !important;
-    line-height:1.17 !important;
-  }
-  .hero-nova{font-size:28px}
-}
-/* ========== END PATCH ========== */
+/* ========== END SAFE PATCH ========== */
 
 </style>
 </head>
@@ -1106,14 +966,14 @@
     <span class="hero-vert">NOVA STUDIO · CREATIVE MARKETING PARTNER</span>
     <div class="hero-copy">
       <h1 class="hero-title">
-        <span class="hero-nova">NOVA STUDIO</span>
+        <span class="hero-brand-title">NOVA STUDIO</span>
         브랜드의 성장을<br>
         설계하는<br>
         마케팅 파트너
       </h1>
       <p class="hero-name-note">Creative Marketing Partner · Strategy · Contents · Design</p>
       <p class="hero-tagline">고객의 선택을 설계하고, 브랜드의 성장을 함께 만듭니다.</p>
-      <p class="hero-desc">노바스튜디오는 마케팅 전략, 콘텐츠 제작, 디자인, 광고 소재, 상세페이지, PPT, 웹사이트까지 브랜드에 필요한 실행을 함께 정리하고 제작하는 크리에이티브 마케팅 스튜디오입니다.</p>
+      <p class="hero-desc">노바스튜디오는 마케팅 전략, 콘텐츠 제작, 디자인, 광고 소재, 상세페이지, PPT, 웹사이트까지 브랜드에 필요한 실행을 함께 정리하고 제작하는 크리에이티브 마케팅 스튜디오입니다. AI 도구를 활용한 효율적인 워크플로우로 필요한 결과물을 빠르고 체계적으로 완성합니다.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#contact">프로젝트 문의하기 ↗</a>
         <a class="btn btn-outline" href="#services">서비스 보기</a>
@@ -1126,33 +986,33 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">01 · ABOUT</div>
-      <h2>브랜드의 방향을 잡고,<br>실행까지 연결합니다.</h2>
+      <h2>브랜드의 성장을,<br>성과로 증명합니다.</h2>
     </div>
     <div class="about-grid">
       <div class="about-copy reveal">
         <h3 class="about-sub">브랜드 소개</h3>
-        <p>노바스튜디오는 라틴어 <em>Novus</em>(새로운)에서 이름을 딴 크리에이티브 마케팅 스튜디오입니다. 브랜드가 필요한 기획, 콘텐츠, 디자인 작업을 하나의 흐름으로 정리합니다.</p>
+        <p>노바스튜디오는 라틴어 <em>Novus</em>(새로운)에서 이름을 딴 퍼포먼스 마케팅 스튜디오입니다. 데이터와 전략을 기반으로, 브랜드가 가진 가치를 실제 성과로 증명합니다.</p>
       </div>
       <div class="about-copy reveal">
-        <h3 class="about-sub">작업 철학</h3>
-        <p>보기에만 좋은 결과물보다, 고객이 이해하고 행동할 수 있는 구조를 중요하게 생각합니다. 목적과 타겟에 맞춰 메시지, 디자인, 콘텐츠 흐름을 함께 설계합니다.</p>
+        <h3 class="about-sub">퍼포먼스 철학</h3>
+        <p>예쁜 것보다 전환되는 것이 먼저라고 믿습니다. 정확한 타겟팅과 데이터 분석을 통해 광고비 대비 최대의 성과를 만들고, 검색 상위노출로 꾸준한 자연 유입을 확보합니다.</p>
       </div>
     </div>
     <div class="strength-grid">
       <div class="strength-card reveal">
         <span class="strength-no">01</span>
-        <h3>브랜드 맞춤 기획</h3>
-        <p>업종과 목적에 맞는 메시지와 콘텐츠 방향을 먼저 정리합니다.</p>
+        <h3>데이터 기반 타겟팅</h3>
+        <p>정확한 오디언스 분석으로 광고 효율을 극대화합니다.</p>
       </div>
       <div class="strength-card reveal">
         <span class="strength-no">02</span>
-        <h3>콘텐츠 구조 설계</h3>
-        <p>블로그, SNS, 상세페이지 등 채널별로 보기 쉬운 흐름을 만듭니다.</p>
+        <h3>검색 상위노출 전략</h3>
+        <p>키워드 분석과 최적화로 꾸준한 자연 유입을 늘립니다.</p>
       </div>
       <div class="strength-card reveal">
         <span class="strength-no">03</span>
-        <h3>제작까지 연결</h3>
-        <p>기획에서 끝나지 않고 실제 사용 가능한 디자인과 콘텐츠로 완성합니다.</p>
+        <h3>성과 중심 운영</h3>
+        <p>ROAS와 전환율 개선에 집중한 광고 운영을 합니다.</p>
       </div>
     </div>
   </div>
@@ -1317,7 +1177,7 @@
     <p>편한 채널로 언제든 문의해주세요. 빠르게 답변드릴게요.</p>
     <div class="contact-links">
       <a class="btn btn-primary" href="#contact">문의하기 ↗</a>
-      <a class="btn btn-outline" href="https://pf.kakao.com/" target="_blank" rel="noopener">카카오톡 문의</a>
+      <a class="btn btn-outline" href="https://pf.kakao.com/" target="_blank" rel="noopener">카카오톡 채널</a>
       <a class="btn btn-outline" href="https://open.kakao.com/" target="_blank" rel="noopener">오픈채팅</a>
     </div>
     <div class="contact-info">
@@ -1327,14 +1187,14 @@
 </section>
 
 <footer class="site-foot">
-  <span class="js-brand">NOVA STUDIO</span> · Creative Marketing Partner · © 2026
+  <span class="js-brand">NOVA STUDIO</span> · Marketing Consultant · © 2026
 </footer>
 
 <script>
   // ============ 브랜드명 수정은 여기서 ============
   const BRAND_NAME = "NOVA STUDIO";
   document.querySelectorAll('.js-brand').forEach(function(el){ el.textContent = BRAND_NAME; });
-  document.title = BRAND_NAME + " — Creative Marketing Partner";
+  document.title = BRAND_NAME + " — Marketing Consultant";
   // =================================================
 
   // ============ PORTFOLIO OVERVIEW 섹션 사진 안내 ============
