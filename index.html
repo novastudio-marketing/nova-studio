@@ -3,287 +3,1399 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA STUDIO | Creative Marketing Partner</title>
-<meta name="description" content="NOVA STUDIO는 마케팅 전략, 콘텐츠, 광고, 상세페이지, PPT, 웹사이트까지 브랜드 성장에 필요한 실행을 함께하는 크리에이티브 마케팅 파트너입니다.">
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css">
+<title>NOVA STUDIO — Creative Marketing Partner</title>
+<meta name="description" content="NOVA STUDIO | 마케팅 전략, 콘텐츠, 디자인, 광고 소재, 상세페이지, PPT, 웹사이트까지 함께하는 크리에이티브 마케팅 파트너.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+
 <style>
+
+  /* ============ 브랜드명 설정 ============
+     실제 텍스트 교체는 자바스크립트 하단의 BRAND_NAME 상수를 수정하세요.
+     ======================================== */
+
+  :root{
+    --bg:#ffffff;
+    --surface:#f5f3fe;
+    --ink:#222222;
+    --ink-soft:#5c5a63;
+    --ink-faint:#9a97a3;
+    --accent:#6c4dff;
+    --accent-2:#a78bfa;
+    --accent-soft:#efeafe;
+    --line:#e6e2f5;
+    --line-strong:#222222;
+    --font-display:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    --font-body:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    --font-script:'Dancing Script', cursive;
+    --wrap:1320px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-weight:450;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+
+  ::selection{ background:var(--accent); color:#fff; }
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding:0 48px;
+  }
+  @media (max-width:640px){ .wrap{ padding:0 22px; } }
+
+  .eyebrow{
+    font-size:18px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+  }
+  .nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:66px;
+  }
+  @media (max-width:760px){ .nav .wrap{ height:58px; } }
+  .nav-brand{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:19px;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:36px;
+    list-style:none;
+    margin:0; padding:0;
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .nav-links a{
+    color:var(--ink);
+    transition:color .15s ease;
+  }
+  .nav-links a:hover{ color:var(--accent); }
+  .nav-cta{ color:var(--ink) !important; }
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    padding:8px;
+    cursor:pointer;
+    width:32px; height:32px;
+    position:relative;
+    flex-shrink:0;
+  }
+  .nav-toggle span{
+    display:block;
+    position:absolute;
+    left:6px; right:6px;
+    height:2px;
+    background:var(--ink);
+    border-radius:2px;
+    transition:transform .25s ease, opacity .2s ease, top .25s ease;
+  }
+  .nav-toggle span:nth-child(1){ top:11px; }
+  .nav-toggle span:nth-child(2){ top:19px; }
+  .nav-toggle span:nth-child(3){ top:27px; }
+  .nav-toggle.open span:nth-child(1){ top:19px; transform:rotate(45deg); }
+  .nav-toggle.open span:nth-child(2){ opacity:0; }
+  .nav-toggle.open span:nth-child(3){ top:19px; transform:rotate(-45deg); }
+
+  @media (max-width:760px){
+    .nav-toggle{ display:block; }
+    .nav-links{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      position:fixed;
+      top:58px; left:0; right:0;
+      background:var(--bg);
+      border-bottom:1px solid var(--line);
+      padding:8px 20px 20px;
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .3s ease, padding .3s ease;
+      z-index:99;
+    }
+    .nav-links.open{
+      max-height:400px;
+      padding:12px 20px 24px;
+      box-shadow:0 16px 30px rgba(34,34,34,0.08);
+    }
+    .nav-links li{ width:100%; }
+    .nav-links a{
+      display:block;
+      padding:14px 0;
+      width:100%;
+      border-bottom:1px solid var(--line);
+      font-size:13.5px;
+    }
+    .nav-links li:last-child a{ border-bottom:none; }
+    .nav-cta{
+      margin-top:6px;
+      display:inline-block !important;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--bg);
+    color:var(--ink);
+    padding:150px 0 90px;
+  }
+  @media (max-width:760px){ .hero{ padding:110px 0 60px; } }
+  .hero .wrap{ position:relative; }
+
+  .hero-vert{
+    position:absolute;
+    left:-6px; top:40px;
+    writing-mode:vertical-rl;
+    font-size:10.5px;
+    letter-spacing:0.14em;
+    color:var(--ink-faint);
+    font-weight:600;
+  }
+  @media (max-width:900px){ .hero-vert{ display:none; } }
+
+  .hero-eyebrow{ display:none; }
+
+  .hero-copy{ text-align:left; margin-bottom:56px; padding-left:28px; }
+  @media (max-width:900px){ .hero-copy{ padding-left:0; } }
+
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(46px, 8vw, 108px);
+    line-height:0.96;
+    letter-spacing:-0.02em;
+    margin:0;
+    color:var(--ink);
+    text-transform:uppercase;
+  }
+  .hero-script{
+    display:block;
+    font-family:var(--font-script);
+    font-weight:700;
+    font-size:clamp(38px, 6vw, 76px);
+    color:var(--accent);
+    margin:-6px 0 26px 6px;
+  }
+  .hero-name-note{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    font-style:italic;
+    margin:0 0 20px;
+  }
+  .hero-name-note em{ color:var(--accent-2); font-style:italic; font-weight:600; }
+  .hero-tagline{
+    font-size:clamp(17px, 2vw, 20px);
+    max-width:520px;
+    color:var(--ink);
+    font-weight:700;
+    margin:0 0 14px;
+  }
+  .hero-desc{
+    max-width:520px;
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0 0 30px;
+  }
+  .hero-actions{
+    display:flex; gap:12px; flex-wrap:wrap;
+  }
+  .btn{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.02em;
+    padding:15px 26px;
+    border:1.5px solid var(--ink);
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:#fff;
+  }
+  .btn-primary:hover{ background:var(--accent); border-color:var(--accent); transform:translateY(-2px); }
+  .btn-outline{
+    background:transparent;
+    color:var(--ink);
+  }
+  .btn-outline:hover{ background:var(--ink); color:#fff; }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{ padding:100px 0; }
+  @media (max-width:760px){ section{ padding:64px 0; } }
+  .sec-head{ margin-bottom:52px; max-width:640px; }
+  .sec-head h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(28px,4vw,42px);
+    margin:14px 0 12px;
+    color:var(--ink);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .sec-head p{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--bg); }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:start;
+    margin-bottom:56px;
+  }
+  @media (max-width:840px){ .about-grid{ grid-template-columns:1fr; gap:32px; } }
+  .about-grid-single{ grid-template-columns:1fr; max-width:760px; }
+  .about-sub{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:24px;
+    color:var(--accent);
+    margin:0 0 12px;
+  }
+  .about-copy p{
+    font-size:16px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .about-copy strong{ color:var(--ink); font-weight:700; }
+  .about-copy em{ color:var(--accent); font-style:italic; }
+  .tag-list{
+    list-style:none; margin:26px 0 0; padding:0;
+    display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .tag-list li{
+    font-size:12.5px;
+    font-weight:600;
+    padding:9px 15px;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    color:var(--ink);
+  }
+  .strength-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line-strong);
+    border:1px solid var(--line-strong);
+  }
+  @media (max-width:700px){ .strength-grid{ grid-template-columns:1fr; } }
+  .strength-card{
+    background:var(--bg);
+    padding:30px 26px;
+  }
+  .strength-no{
+    font-family:var(--font-display);
+    font-size:34px;
+    font-weight:800;
+    color:var(--accent-2);
+  }
+  .strength-card h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:18px;
+    margin:14px 0 8px;
+    color:var(--ink);
+  }
+  .strength-card p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0;
+    line-height:1.55;
+  }
+
+  /* ---------- SERVICES (photo grid) ---------- */
+  .services-new{ background:var(--surface); }
+  .svc-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:16px;
+  }
+  @media (max-width:900px){ .svc-grid{ grid-template-columns:repeat(3, 1fr); } }
+  @media (max-width:640px){ .svc-grid{ grid-template-columns:repeat(2, 1fr); } }
+  .svc-card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 16px 20px;
+    text-align:center;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .svc-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px rgba(34,34,34,0.08); border-color:var(--accent); }
+  .svc-photo{
+    width:100%;
+    height:110px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:14px;
+  }
+  .svc-card h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:14.5px;
+    margin:0;
+    color:var(--ink);
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing{ background:var(--bg); }
+  .price-list{ display:flex; flex-direction:column; }
+  .price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:22px 0;
+    border-top:1px solid var(--line-strong);
+  }
+  .price-row:last-child{ border-bottom:1px solid var(--line-strong); }
+  .price-name{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:16px;
+    color:var(--ink);
+  }
+  .price-value{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:16px;
+    color:var(--accent);
+  }
+
+  /* ---------- WHY NOVA STUDIO ---------- */
+  .why{ background:var(--surface); }
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:16px;
+  }
+  @media (max-width:980px){ .why-grid{ grid-template-columns:repeat(3, 1fr); } }
+  @media (max-width:640px){ .why-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:420px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px 18px;
+  }
+  .why-card h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:15px;
+    margin:10px 0 8px;
+    color:var(--ink);
+  }
+  .why-card p{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin:0;
+    line-height:1.5;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{ background:var(--bg); }
+  .process-flow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .process-step{
+    flex:1;
+    min-width:110px;
+    text-align:center;
+    background:var(--surface);
+    border-radius:14px;
+    padding:28px 10px;
+  }
+  .process-no{
+    display:block;
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:13px;
+    color:var(--accent);
+    margin-bottom:10px;
+  }
+  .process-step h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:16px;
+    margin:0;
+    color:var(--ink);
+  }
+  .process-arrow{
+    color:var(--accent-2);
+    font-size:20px;
+    font-weight:700;
+  }
+  @media (max-width:700px){ .process-flow{ flex-direction:column; } .process-arrow{ transform:rotate(90deg); } .process-step{ width:100%; } }
+
+  /* ---------- SKILLS ---------- */
+  .skills{ background:var(--surface); }
+  .skills-list{ display:flex; flex-direction:column; gap:18px; }
+  .skill-row{
+    display:grid;
+    grid-template-columns:120px 1fr 50px;
+    align-items:center;
+    gap:16px;
+  }
+  @media (max-width:560px){ .skill-row{ grid-template-columns:90px 1fr 40px; gap:10px; } }
+  .skill-name{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .skill-bar{
+    height:8px;
+    background:var(--line);
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .skill-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius:999px;
+  }
+  .skill-pct{
+    font-family:var(--font-display);
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink-soft);
+    text-align:right;
+  }
+
+  /* ---------- PORTFOLIO OVERVIEW ---------- */
+  .pf-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  @media (max-width:860px){ .pf-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:560px){ .pf-grid{ grid-template-columns:1fr; } }
+  .pf-item{ text-align:left; }
+  .pf-photo{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:12px;
+  }
+  .pf-item h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:16px;
+    margin:0;
+    color:var(--ink);
+  }
+  .strengths{
+    list-style:none; margin:32px 0 0; padding:0;
+  }
+  .strengths li{
+    display:flex; gap:18px; align-items:baseline;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .strengths li:last-child{ border-bottom:1px solid var(--line); }
+  .strengths b{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:14.5px;
+    color:var(--ink);
+    min-width:128px;
+    flex-shrink:0;
+  }
+  .strengths span{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+  .about-panel{
+    background:var(--surface);
+    color:var(--ink);
+    padding:30px 28px;
+    border-radius:12px;
+    position:relative;
+  }
+  .about-panel h3{
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 20px;
+    font-weight:700;
+  }
+  .about-panel dl{ margin:0; }
+  .about-panel dt{
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-top:16px;
+  }
+  .about-panel dt:first-child{ margin-top:0; }
+  .about-panel dd{
+    margin:4px 0 0;
+    font-size:15px;
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  /* ---------- CAPABILITIES ---------- */
+  .capabilities{ background:var(--bg); }
+  .cap-grid{
+    display:grid;
+    grid-template-columns:0.8fr 1.2fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media (max-width:900px){ .cap-grid{ grid-template-columns:1fr; } }
+  .cap-heading{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(56px, 8vw, 108px);
+    line-height:0.92;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    margin:0;
+    color:var(--ink);
+    word-break:break-all;
+  }
+  @media (max-width:900px){ .cap-heading{ word-break:normal; margin-bottom:20px; } }
+  .cap-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 40px;
+  }
+  @media (max-width:640px){ .cap-list{ grid-template-columns:1fr; } }
+  .cap-item{
+    padding:26px 0;
+    border-top:1px solid var(--line-strong);
+  }
+  .cap-item:nth-last-child(-n+2){ border-bottom:1px solid var(--line-strong); }
+  @media (max-width:640px){ .cap-item:nth-last-child(-n+2){ border-bottom:none; } .cap-item:last-child{ border-bottom:1px solid var(--line-strong); } }
+  .cap-photo{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:16px;
+  }
+  .cap-item h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:17px;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .cap-item ul{ list-style:none; margin:0; padding:0; }
+  .cap-item li{
+    font-size:13.5px;
+    color:var(--ink);
+    margin-bottom:10px;
+    padding-left:14px;
+    position:relative;
+  }
+  .cap-item li::before{ content:"•"; position:absolute; left:0; color:var(--accent); }
+  .cap-item li small{
+    display:block;
+    color:var(--ink-faint);
+    font-size:12px;
+    margin-top:2px;
+  }
+
+  /* ---------- WORK / FILTER ---------- */
+  .work{ background:var(--surface); }
+  .filter-row{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin-bottom:40px;
+  }
+  .filter-btn{
+    font-size:13px;
+    font-weight:700;
+    padding:10px 18px;
+    border:1.5px solid var(--line-strong);
+    border-radius:999px;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    transition:all .15s ease;
+    display:inline-flex;
+    align-items:center;
+    white-space:nowrap;
+    flex-shrink:0;
+    word-break:keep-all;
+  }
+  .filter-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .filter-btn.active{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:#fff;
+  }
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  @media (max-width:980px){ .card-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:640px){ .card-grid{ grid-template-columns:1fr; } }
+
+  .tag-card{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px 22px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .tag-card:hover{ transform:translateY(-4px); box-shadow:0 18px 34px rgba(17,17,17,0.08); border-color:var(--ink); }
+  .tag-icon{
+    position:absolute;
+    top:22px; right:20px;
+    width:20px; height:20px;
+    color:var(--accent);
+  }
+  .tag-head{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+    padding-right:26px;
+  }
+  .tag-cat{
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+  }
+  .tag-period{
+    font-size:11px;
+    color:var(--ink-faint);
+    white-space:nowrap;
+  }
+  .tag-card h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:18px;
+    line-height:1.3;
+    margin:0;
+    color:var(--ink);
+  }
+  .tag-org{
+    font-size:11.5px;
+    color:var(--ink-faint);
+    font-weight:600;
+  }
+  .tag-pain{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .tag-results{
+    display:flex; flex-wrap:wrap; gap:6px;
+    margin-top:auto;
+    padding-top:12px;
+    border-top:1px solid var(--line);
+  }
+  .result-chip{
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--surface);
+    padding:5px 10px;
+    border-radius:999px;
+  }
+  .tag-role{
+    font-size:11px;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- CAREER ---------- */
+  .career{ background:var(--bg); }
+  .timeline{ display:flex; flex-direction:column; }
+  .tl-item{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:32px;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+  }
+  .tl-item:last-child{ border-bottom:1px solid var(--line); }
+  @media (max-width:700px){ .tl-item{ grid-template-columns:1fr; gap:10px; } }
+  .tl-period{
+    font-size:13px;
+    font-weight:700;
+    color:var(--accent);
+  }
+  .tl-body h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:21px;
+    margin:0 0 10px;
+    color:var(--ink);
+  }
+  .tl-body p{
+    color:var(--ink-soft);
+    font-size:14px;
+    max-width:640px;
+    margin:0 0 12px;
+  }
+  .tl-tags{
+    display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .tl-tags span{
+    font-size:11.5px;
+    font-weight:600;
+    padding:6px 12px;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    color:var(--ink);
+  }
+
+  /* ---------- RESOURCES ---------- */
+  .resources{ background:var(--surface); }
+  .resource-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  @media (max-width:980px){ .resource-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:600px){ .resource-grid{ grid-template-columns:1fr; } }
+  .resource-card{
+    background:#fff;
+    border-radius:14px;
+    padding:28px 26px;
+  }
+  .resource-card .resource-icon{
+    width:26px; height:26px;
+    margin-bottom:16px;
+    color:var(--accent);
+  }
+  .resource-card h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:16.5px;
+    margin:0 0 8px;
+    color:var(--ink);
+  }
+  .resource-card p{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0;
+    line-height:1.55;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--bg);
+    text-align:center;
+  }
+  .contact h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(32px,6vw,58px);
+    margin:16px 0 18px;
+    color:var(--ink);
+    line-height:1.15;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+  }
+  .contact p{
+    color:var(--ink-soft);
+    max-width:480px;
+    margin:0 auto 34px;
+    font-size:15px;
+  }
+  .contact-links{
+    display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
+    margin-bottom:52px;
+  }
+  .contact-info{
+    display:flex; justify-content:center; gap:26px; flex-wrap:wrap;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .contact-info a:hover{ color:var(--accent); }
+  .contact .eyebrow{ justify-content:center; }
+
+  footer.site-foot{
+    background:var(--bg);
+    color:var(--ink-faint);
+    text-align:center;
+    padding:26px 0;
+    font-size:11.5px;
+    border-top:1px solid var(--line);
+  }
+
+  /* legacy service classes (unused, hidden) */
+  .services{ display:none; }
+
+  .spark{ display:none; }
+  .contour{ display:none; }
+  .hero-patches{ display:none; }
+  .hero-card{ display:none; }
+  .hero-card-label{ display:none; }
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+/* ========== NOVA STUDIO 2.0 PATCH ========== */
 :root{
-  --bg:#ffffff;
-  --ink:#19171f;
-  --muted:#6d6878;
-  --soft:#f7f4ff;
-  --soft2:#efeaff;
+  --accent:#6c4dff;
+  --accent-2:#a78bfa;
+  --accent-soft:#f4f0ff;
+  --surface:#f7f4ff;
   --line:#e8e1ff;
-  --purple:#6c4dff;
-  --purple2:#a78bfa;
-  --pink:#ff7ab6;
-  --yellow:#fee500;
-  --shadow:0 26px 70px rgba(108,77,255,.14);
-  --wrap:1180px;
+  --ink:#1d1a27;
+  --ink-soft:#625d70;
+  --line-strong:#1d1a27;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:"SUIT Variable",-apple-system,BlinkMacSystemFont,"Pretendard",sans-serif;
-  color:var(--ink);
-  background:var(--bg);
-  word-break:keep-all;
-  overflow-x:hidden;
-}
-a{text-decoration:none;color:inherit}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
-@media(max-width:640px){.wrap{padding:0 18px}}
-
 .nav{
-  position:sticky;top:0;z-index:30;
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(232,225,255,.8);
+  box-shadow:0 10px 30px rgba(108,77,255,0.05);
 }
-.nav .wrap{height:72px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:900;font-size:21px;letter-spacing:-.04em}
-.logo span{color:var(--purple)}
-.logo small{display:block;font-size:10px;letter-spacing:.16em;color:var(--muted);margin-top:-3px}
-.menu{display:flex;gap:28px;font-size:13px;font-weight:800;color:var(--muted)}
-.menu a:hover{color:var(--purple)}
-.kakao-top{background:var(--ink);color:#fff!important;padding:12px 18px;border-radius:999px}
-@media(max-width:800px){.menu a:not(.kakao-top){display:none}}
-
+.nav-brand{
+  font-weight:900;
+  letter-spacing:-0.035em;
+}
 .hero{
   background:
-    radial-gradient(circle at 78% 12%, rgba(108,77,255,.16), transparent 34%),
-    radial-gradient(circle at 18% 88%, rgba(255,122,182,.14), transparent 28%),
+    radial-gradient(circle at 82% 18%, rgba(108,77,255,.15), transparent 34%),
+    radial-gradient(circle at 20% 90%, rgba(167,139,250,.15), transparent 28%),
     linear-gradient(180deg,#fff 0%,#fbf9ff 100%);
-  padding:88px 0 76px;
+  padding:138px 0 86px;
 }
-.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:58px;align-items:center}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.mock-scene{min-height:420px}}
-.label{font-size:13px;font-weight:850;letter-spacing:.14em;color:var(--purple);text-transform:uppercase}
-h1{
-  font-size:clamp(42px,6vw,78px);
-  line-height:1.16;
-  letter-spacing:-.045em;
-  margin:18px 0 26px;
-  font-weight:700;
+.hero .wrap{
+  display:grid;
+  grid-template-columns:minmax(0, .95fr) minmax(360px, 1.05fr);
+  gap:54px;
+  align-items:center;
 }
-h1 .nova{
+.hero-copy{
+  margin-bottom:0;
+  padding-left:0;
+}
+.hero-title{
+  text-transform:none !important;
+  font-weight:650 !important;
+  font-size:clamp(42px, 5.7vw, 78px) !important;
+  line-height:1.16 !important;
+  letter-spacing:-0.045em !important;
+}
+.hero-nova{
   display:block;
-  color:var(--purple);
-  font-size:clamp(28px,3.2vw,42px);
-  line-height:1.1;
-  letter-spacing:-.02em;
+  color:var(--accent);
+  font-size:clamp(29px,3.2vw,43px);
   font-weight:850;
+  line-height:1.1;
+  letter-spacing:-0.025em;
   margin-bottom:18px;
 }
-.hero p{font-size:18px;line-height:1.8;color:var(--muted);max-width:560px;margin:0 0 34px}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:999px;font-weight:850;border:1px solid var(--ink);transition:.18s ease}
-.btn:hover{transform:translateY(-2px)}
-.btn.primary{background:var(--ink);color:#fff}
-.btn.secondary{background:#fff;color:var(--ink)}
-.btn.kakao{background:var(--yellow);border-color:var(--yellow);color:#191600}
-
-.mock-scene{
-  position:relative;
-  min-height:520px;
+.hero-name-note{
+  margin:24px 0 18px !important;
+  color:var(--accent) !important;
+  font-style:normal !important;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
 }
-.laptop{
-  position:absolute;right:0;top:14px;width:82%;
-  background:#1c1a24;border-radius:26px;padding:14px 14px 24px;
-  box-shadow:var(--shadow);
+.hero-tagline{
+  font-size:clamp(18px, 2vw, 22px);
+  font-weight:750;
 }
-.screen{background:#fff;border-radius:16px;overflow:hidden;height:320px;border:1px solid rgba(255,255,255,.18)}
-.screen-head{height:48px;background:#1c1a24;color:#fff;display:flex;align-items:center;padding:0 20px;font-weight:850;font-size:13px;letter-spacing:.06em}
-.screen-body{padding:26px;background:linear-gradient(135deg,#fff,#f3eeff);height:272px}
-.screen-body h3{font-size:36px;line-height:1.05;margin:0 0 18px;letter-spacing:-.04em}
-.screen-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.screen-card{height:78px;border-radius:18px;background:#fff;border:1px solid var(--line);padding:14px}
-.line{height:8px;background:#dcd2ff;border-radius:99px;margin:8px 0}
-.line.short{width:58%}.line.mid{width:76%}
-.phone{
-  position:absolute;left:0;bottom:34px;width:160px;background:#1c1a24;border-radius:34px;padding:10px;
-  box-shadow:0 22px 54px rgba(68,46,151,.22);
+.hero-desc{
+  max-width:590px;
+  line-height:1.78;
+  font-size:16px;
 }
-.phone-inner{background:#fff;border-radius:25px;height:320px;padding:16px}
-.post-img{height:112px;border-radius:18px;background:linear-gradient(135deg,#eee7ff,#fff0f7);margin-bottom:14px}
-.post-card{height:70px;border-radius:16px;background:var(--soft);border:1px solid var(--line);margin-top:14px}
-.deck{
-  position:absolute;right:34%;bottom:0;width:250px;height:160px;background:#fff;border:1px solid var(--line);
-  border-radius:18px;transform:rotate(-7deg);box-shadow:0 22px 54px rgba(68,46,151,.16);
-  padding:24px;
+.hero::after{
+  content:"";
+  display:block;
+  width:min(520px, 41vw);
+  height:430px;
+  position:absolute;
+  right:calc((100vw - min(var(--wrap), 100vw))/2 + 48px);
+  top:134px;
+  border-radius:34px;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(135deg,rgba(108,77,255,.7),rgba(167,139,250,.2)) border-box;
+  border:1px solid transparent;
+  box-shadow:0 30px 80px rgba(108,77,255,.14);
+  pointer-events:none;
 }
-.deck b{font-size:22px;color:var(--purple)}
-.deck .mini-chart{height:52px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--pink));margin-top:16px}
+.hero::before{
+  content:"NOVA\\A MARKETING\\A SYSTEM";
+  white-space:pre;
+  position:absolute;
+  right:calc((100vw - min(var(--wrap), 100vw))/2 + 88px);
+  top:178px;
+  width:min(430px, 34vw);
+  height:330px;
+  border-radius:26px;
+  background:
+    linear-gradient(135deg, rgba(108,77,255,.92), rgba(167,139,250,.85));
+  color:#fff;
+  font-size:44px;
+  line-height:1.03;
+  letter-spacing:-.04em;
+  font-weight:850;
+  padding:36px;
+  box-shadow:0 28px 60px rgba(108,77,255,.2);
+  pointer-events:none;
+  z-index:1;
+}
+.hero-actions{position:relative; z-index:2;}
+.hero-copy{position:relative; z-index:3;}
+.hero .wrap::after{
+  content:"SNS · AD · PPT · WEB · DETAIL";
+  position:absolute;
+  right:88px;
+  bottom:24px;
+  z-index:2;
+  width:280px;
+  padding:18px 20px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid var(--line);
+  color:var(--accent);
+  font-size:13px;
+  font-weight:850;
+  box-shadow:0 18px 40px rgba(108,77,255,.13);
+}
+.btn-primary{
+  border-color:var(--accent);
+  background:var(--accent);
+}
+.btn-primary:hover{
+  background:var(--ink);
+  border-color:var(--ink);
+}
+.btn-outline{
+  background:#fff;
+  border-color:var(--line-strong);
+}
+.sec-head h2{
+  letter-spacing:-0.035em;
+}
+.svc-card{
+  text-align:left;
+  border-radius:20px;
+  overflow:hidden;
+  padding:0 0 20px;
+  box-shadow:0 10px 30px rgba(108,77,255,.05);
+}
+.svc-photo{
+  height:145px;
+  border-radius:0;
+  margin:0 0 18px;
+}
+.svc-card h3{
+  padding:0 18px;
+  font-size:15.5px;
+}
+.pf-photo{
+  height:220px;
+  box-shadow:0 14px 36px rgba(108,77,255,.08);
+}
+.price-row{
+  background:#fff;
+  margin-bottom:10px;
+  padding:20px 22px;
+  border:1px solid var(--line) !important;
+  border-radius:16px;
+}
+.contact{
+  background:linear-gradient(135deg,#fff 0%,#f7f4ff 100%);
+}
+.contact-links .btn:first-child{
+  display:none;
+}
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero::before,.hero::after,.hero .wrap::after{display:none}
+}
+@media (max-width:760px){
+  .hero-title{
+    font-size:clamp(38px, 11vw, 56px) !important;
+    line-height:1.17 !important;
+  }
+  .hero-nova{font-size:28px}
+}
+/* ========== END PATCH ========== */
 
-.stats{padding:36px 0;border-bottom:1px solid var(--line);background:#fff}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.stat{padding:10px 0}
-.stat b{font-size:34px;color:var(--purple);letter-spacing:-.04em}
-.stat p{margin:6px 0 0;color:var(--muted);font-size:14px}
-@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
-
-section{padding:90px 0}
-.sec-head{text-align:center;margin-bottom:42px}
-.sec-head .label{margin-bottom:10px}
-.sec-head h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.05em;line-height:1.16;margin:0 0 14px;font-weight:750}
-.sec-head p{color:var(--muted);line-height:1.75;margin:0 auto;max-width:590px}
-
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:1000px){.services-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.services-grid{grid-template-columns:1fr}}
-.service{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;transition:.18s ease}
-.service:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.thumb{height:170px;background:var(--soft);position:relative;overflow:hidden}
-.thumb:after{content:"";position:absolute;inset:auto -20px -28px -20px;height:80px;background:rgba(108,77,255,.09);filter:blur(18px)}
-.thumb.report:before{content:"";position:absolute;inset:28px;background:#fff;border-radius:12px;box-shadow:28px 18px 0 #ded4ff}
-.thumb.ppt:before{content:"";position:absolute;left:25px;right:25px;top:42px;height:86px;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:16px}
-.thumb.web:before{content:"";position:absolute;left:28px;right:28px;top:28px;height:110px;background:#fff;border:10px solid #1c1a24;border-radius:18px}
-.thumb.detail:before{content:"";position:absolute;left:52px;top:20px;width:82px;height:130px;background:#fff;border-radius:16px;box-shadow:96px 22px 0 #ded4ff}
-.thumb.sns:before{content:"";position:absolute;left:36px;top:25px;width:82px;height:120px;background:#fff;border-radius:18px;box-shadow:92px 20px 0 #fff,184px 0 0 #fff}
-.thumb.ad:before{content:"SALE";position:absolute;left:30px;right:30px;top:48px;height:76px;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border-radius:16px;display:grid;place-items:center;font-weight:900;font-size:28px}
-.thumb.video:before{content:"▶";position:absolute;inset:40px;background:#1c1a24;color:#fff;border-radius:18px;display:grid;place-items:center;font-size:42px}
-.thumb.brand:before{content:"NOVA";position:absolute;inset:46px;background:#fff;color:var(--purple);border-radius:16px;display:grid;place-items:center;font-weight:900;font-size:28px}
-.service-body{padding:22px}
-.service h3{margin:0 0 10px;font-size:20px;letter-spacing:-.03em}
-.service p{margin:0;color:var(--muted);line-height:1.65;font-size:14px}
-
-.works{background:linear-gradient(180deg,#fbf9ff,#fff)}
-.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:900px){.work-grid{grid-template-columns:1fr}}
-.work{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 14px 40px rgba(108,77,255,.07)}
-.work .thumb{height:220px}
-.work-body{padding:22px}
-.work h3{margin:0 0 8px;font-size:20px;letter-spacing:-.03em}
-.work p{color:var(--muted);margin:0;font-size:14px;line-height:1.6}
-
-.process{background:var(--soft)}
-.process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-@media(max-width:900px){.process-grid{grid-template-columns:1fr}}
-.step{border:1px solid var(--line);border-radius:20px;padding:24px;background:#fff}
-.step b{display:block;font-size:13px;color:var(--purple);margin-bottom:18px}
-.step h3{margin:0 0 8px}.step p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
-
-.pricing{background:#fff}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:900px){.price-grid{grid-template-columns:1fr}}
-.price{background:linear-gradient(180deg,#fff,#fbf9ff);border:1px solid var(--line);border-radius:24px;padding:28px}
-.price h3{font-size:22px;margin:0 0 8px}
-.money{font-size:32px;font-weight:850;margin:14px 0;color:var(--purple)}
-.price ul{list-style:none;padding:0;margin:0}.price li{padding:12px 0;border-top:1px solid var(--line);color:var(--muted)}
-
-.contact{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;text-align:center}
-.contact h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.05em;line-height:1.12;margin:0 0 18px;font-weight:750}
-.contact p{color:rgba(255,255,255,.84);line-height:1.75;margin:0 auto 28px;max-width:590px}
-.contact .btn.secondary{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
-.float-kakao{position:fixed;right:22px;bottom:22px;background:var(--yellow);color:#111;padding:14px 18px;border-radius:999px;font-weight:900;box-shadow:0 14px 34px rgba(0,0,0,.18)}
-footer{padding:32px 0;text-align:center;color:var(--muted);font-size:13px}
-.reveal{opacity:0;transform:translateY(18px);transition:.5s ease}.reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
+
 <nav class="nav">
   <div class="wrap">
-    <a class="logo" href="#top">NOVA<span>.</span>STUDIO<small>CREATIVE MARKETING PARTNER</small></a>
-    <div class="menu">
-      <a href="#services">SERVICE</a><a href="#works">WORKS</a><a href="#process">PROCESS</a><a href="#pricing">PRICE</a><a class="kakao-top" href="#contact">카카오톡 문의</a>
-    </div>
+    <a href="#top" class="nav-brand js-brand">NOVA STUDIO</a>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="label">MARKETING & DESIGN PARTNER</div>
-      <h1><span class="nova">NOVA STUDIO</span>브랜드의 성장을<br>설계하는<br>마케팅 파트너</h1>
-      <p>마케팅 전략부터 콘텐츠 제작, 디자인, 광고 운영, 홈페이지 제작까지. 브랜드의 성장을 위한 모든 실행을 NOVA STUDIO가 함께합니다.</p>
-      <div class="btns">
-        <a class="btn primary" href="#works">작업 예시 보기 →</a>
-        <a class="btn secondary" href="#contact">상담 문의하기</a>
+  <div class="wrap">
+    <span class="hero-vert">NOVA STUDIO · CREATIVE MARKETING PARTNER</span>
+    <div class="hero-copy">
+      <h1 class="hero-title">
+        <span class="hero-nova">NOVA STUDIO</span>
+        브랜드의 성장을<br>
+        설계하는<br>
+        마케팅 파트너
+      </h1>
+      <p class="hero-name-note">Creative Marketing Partner · Strategy · Contents · Design</p>
+      <p class="hero-tagline">고객의 선택을 설계하고, 브랜드의 성장을 함께 만듭니다.</p>
+      <p class="hero-desc">노바스튜디오는 마케팅 전략, 콘텐츠 제작, 디자인, 광고 소재, 상세페이지, PPT, 웹사이트까지 브랜드에 필요한 실행을 함께 정리하고 제작하는 크리에이티브 마케팅 스튜디오입니다.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">프로젝트 문의하기 ↗</a>
+        <a class="btn btn-outline" href="#services">서비스 보기</a>
       </div>
-    </div>
-    <div class="mock-scene reveal">
-      <div class="laptop"><div class="screen"><div class="screen-head">NOVA STUDIO</div><div class="screen-body"><h3>Marketing<br>Strategy</h3><div class="screen-card-grid"><div class="screen-card"><div class="line mid"></div><div class="line short"></div></div><div class="screen-card"><div class="line mid"></div><div class="line short"></div></div></div></div></div></div>
-      <div class="phone"><div class="phone-inner"><div class="post-img"></div><div class="line mid"></div><div class="line short"></div><div class="post-card"></div></div></div>
-      <div class="deck"><b>Proposal</b><div class="mini-chart"></div><div class="line mid"></div></div>
     </div>
   </div>
 </header>
 
-<div class="stats"><div class="wrap stats-grid">
-  <div class="stat"><b>8+</b><p>서비스 카테고리</p></div><div class="stat"><b>1:1</b><p>맞춤 진행</p></div><div class="stat"><b>AI</b><p>효율적 워크플로우</p></div><div class="stat"><b>100%</b><p>목적 중심 구성</p></div>
-</div></div>
-
-<section id="services">
+<section class="about" id="about">
   <div class="wrap">
-    <div class="sec-head"><div class="label">OUR SERVICES</div><h2>필요한 마케팅 솔루션을 제공합니다</h2><p>작업물만 만드는 것이 아니라, 고객이 이해하고 문의하게 만드는 흐름까지 함께 설계합니다.</p></div>
-    <div class="services-grid">
-      <div class="service reveal"><div class="thumb report"></div><div class="service-body"><h3>사업계획서 · 제안서</h3><p>투자유치, 정부지원사업, 기업 제안에 맞는 문서 구성.</p></div></div>
-      <div class="service reveal"><div class="thumb ppt"></div><div class="service-body"><h3>PPT 디자인</h3><p>핵심 메시지가 잘 보이는 프레젠테이션 디자인.</p></div></div>
-      <div class="service reveal"><div class="thumb web"></div><div class="service-body"><h3>웹사이트 제작</h3><p>브랜드 소개와 문의 전환에 맞춘 랜딩페이지.</p></div></div>
-      <div class="service reveal"><div class="thumb detail"></div><div class="service-body"><h3>상세페이지 디자인</h3><p>구매 포인트와 혜택을 설득력 있게 정리.</p></div></div>
-      <div class="service reveal"><div class="thumb sns"></div><div class="service-body"><h3>SNS 콘텐츠</h3><p>카드뉴스, 이벤트, 후기, 정보성 콘텐츠 제작.</p></div></div>
-      <div class="service reveal"><div class="thumb ad"></div><div class="service-body"><h3>광고 · 배너 디자인</h3><p>네이버, 메타, 인스타그램 광고 소재 제작.</p></div></div>
-      <div class="service reveal"><div class="thumb video"></div><div class="service-body"><h3>영상 편집 · 제작</h3><p>숏폼, 제품 소개, 브랜드 홍보 영상 콘텐츠.</p></div></div>
-      <div class="service reveal"><div class="thumb brand"></div><div class="service-body"><h3>브랜딩 디자인</h3><p>로고, 명함, 브랜드 톤앤매너 구성.</p></div></div>
+    <div class="sec-head reveal">
+      <div class="eyebrow">01 · ABOUT</div>
+      <h2>브랜드의 방향을 잡고,<br>실행까지 연결합니다.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <h3 class="about-sub">브랜드 소개</h3>
+        <p>노바스튜디오는 라틴어 <em>Novus</em>(새로운)에서 이름을 딴 크리에이티브 마케팅 스튜디오입니다. 브랜드가 필요한 기획, 콘텐츠, 디자인 작업을 하나의 흐름으로 정리합니다.</p>
+      </div>
+      <div class="about-copy reveal">
+        <h3 class="about-sub">작업 철학</h3>
+        <p>보기에만 좋은 결과물보다, 고객이 이해하고 행동할 수 있는 구조를 중요하게 생각합니다. 목적과 타겟에 맞춰 메시지, 디자인, 콘텐츠 흐름을 함께 설계합니다.</p>
+      </div>
+    </div>
+    <div class="strength-grid">
+      <div class="strength-card reveal">
+        <span class="strength-no">01</span>
+        <h3>브랜드 맞춤 기획</h3>
+        <p>업종과 목적에 맞는 메시지와 콘텐츠 방향을 먼저 정리합니다.</p>
+      </div>
+      <div class="strength-card reveal">
+        <span class="strength-no">02</span>
+        <h3>콘텐츠 구조 설계</h3>
+        <p>블로그, SNS, 상세페이지 등 채널별로 보기 쉬운 흐름을 만듭니다.</p>
+      </div>
+      <div class="strength-card reveal">
+        <span class="strength-no">03</span>
+        <h3>제작까지 연결</h3>
+        <p>기획에서 끝나지 않고 실제 사용 가능한 디자인과 콘텐츠로 완성합니다.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="works" id="works">
+<section class="services-new" id="services">
   <div class="wrap">
-    <div class="sec-head"><div class="label">COPYRIGHT-SAFE MOCKUPS</div><h2>저작권 걱정 없는 예시 목업</h2><p>외부 브랜드 이미지를 쓰지 않고 직접 만든 목업 중심으로 구성했습니다.</p></div>
-    <div class="work-grid">
-      <div class="work reveal"><div class="thumb web"></div><div class="work-body"><h3>기업 홈페이지 리뉴얼</h3><p>서비스 소개와 문의 전환 중심 랜딩페이지.</p></div></div>
-      <div class="work reveal"><div class="thumb report"></div><div class="work-body"><h3>투자 제안서 디자인</h3><p>시장 분석, 비즈니스 모델, 성과 계획 구성.</p></div></div>
-      <div class="work reveal"><div class="thumb detail"></div><div class="work-body"><h3>브랜드몰 상세페이지</h3><p>제품 장점과 구매 포인트를 시각화.</p></div></div>
-      <div class="work reveal"><div class="thumb sns"></div><div class="work-body"><h3>SNS 콘텐츠 제작</h3><p>카드뉴스, 이벤트, 후기 콘텐츠 패키지.</p></div></div>
-      <div class="work reveal"><div class="thumb ad"></div><div class="work-body"><h3>광고 배너 캠페인</h3><p>시즌 프로모션용 배너 소재.</p></div></div>
-      <div class="work reveal"><div class="thumb brand"></div><div class="work-body"><h3>브랜드 아이덴티티</h3><p>가상 브랜드 로고와 인쇄물 목업.</p></div></div>
+    <div class="sec-head reveal">
+      <div class="eyebrow">02 · SERVICES</div>
+      <h2>무엇을 도와드릴까요?</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <img class="svc-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?fm=jpg&q=70&w=600&auto=format&fit=crop" alt="사업계획서·제안서 예시">
+        <h3>사업계획서 · 제안서</h3>
+      </div>
+      <div class="svc-card reveal">
+        <img class="svc-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?fm=jpg&q=70&w=600&auto=format&fit=crop" alt="PPT 디자인 예시">
+        <h3>PPT 디자인</h3>
+      </div>
+      <div class="svc-card reveal">
+        <img class="svc-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1527443195645-1133f7f28990?fm=jpg&q=70&w=600&auto=format&fit=crop" alt="홈페이지 디자인 예시">
+        <h3>홈페이지 디자인</h3>
+      </div>
+      <div class="svc-card reveal">
+        <img class="svc-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?fm=jpg&q=70&w=600&auto=format&fit=crop" alt="상세페이지 예시">
+        <h3>상세페이지</h3>
+      </div>
+      <div class="svc-card reveal">
+        <img class="svc-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1759215524472-1b0686fdbd87?fm=jpg&q=70&w=600&auto=format&fit=crop" alt="SNS 콘텐츠 예시">
+        <h3>SNS 콘텐츠</h3>
+      </div>
+      <div class="svc-card reveal">
+        <img class="svc-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?fm=jpg&q=70&w=600&auto=format&fit=crop" alt="광고 배너 예시">
+        <h3>광고 배너</h3>
+      </div>
+      <div class="svc-card reveal">
+        <img class="svc-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1777652918753-d66882b15391?fm=jpg&q=70&w=600&auto=format&fit=crop" alt="콘텐츠 디자인 예시">
+        <h3>콘텐츠 디자인</h3>
+      </div>
+      <div class="svc-card reveal">
+        <img class="svc-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1674027001834-719c347d1eca?fm=jpg&q=70&w=600&auto=format&fit=crop" alt="사진 보정 예시">
+        <h3>사진 보정</h3>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="process" id="process">
   <div class="wrap">
-    <div class="sec-head"><div class="label">OUR PROCESS</div><h2>체계적인 프로젝트 진행 과정</h2><p>문의부터 납품까지 필요한 단계를 명확하게 안내합니다.</p></div>
-    <div class="process-grid">
-      <div class="step reveal"><b>01</b><h3>문의 및 상담</h3><p>필요한 작업과 목적을 확인합니다.</p></div>
-      <div class="step reveal"><b>02</b><h3>전략 및 기획</h3><p>메시지와 구성 방향을 정리합니다.</p></div>
-      <div class="step reveal"><b>03</b><h3>디자인 및 제작</h3><p>콘텐츠와 디자인을 제작합니다.</p></div>
-      <div class="step reveal"><b>04</b><h3>검수 및 피드백</h3><p>수정 사항을 반영합니다.</p></div>
-      <div class="step reveal"><b>05</b><h3>최종 전달</h3><p>최종 파일을 전달합니다.</p></div>
+    <div class="sec-head reveal">
+      <div class="eyebrow">03 · PROCESS</div>
+      <h2>작업 프로세스</h2>
+    </div>
+    <div class="process-flow">
+      <div class="process-step reveal"><span class="process-no">01</span><h3>문의</h3></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step reveal"><span class="process-no">02</span><h3>상담</h3></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step reveal"><span class="process-no">03</span><h3>견적</h3></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step reveal"><span class="process-no">04</span><h3>디자인</h3></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step reveal"><span class="process-no">05</span><h3>수정</h3></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step reveal"><span class="process-no">06</span><h3>납품</h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="capabilities" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">04 · PORTFOLIO</div>
+      <h2>PORTFOLIO OVERVIEW</h2>
+    </div>
+    <div class="pf-grid">
+      <div class="pf-item reveal">
+        <img class="pf-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?fm=jpg&q=70&w=800&auto=format&fit=crop" alt="Performance Ads 작업 예시">
+        <h3>Performance Ads</h3>
+      </div>
+      <div class="pf-item reveal">
+        <img class="pf-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1674027001834-719c347d1eca?fm=jpg&q=70&w=800&auto=format&fit=crop" alt="SEO 작업 예시">
+        <h3>SEO</h3>
+      </div>
+      <div class="pf-item reveal">
+        <img class="pf-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1759215524472-1b0686fdbd87?fm=jpg&q=70&w=800&auto=format&fit=crop" alt="SNS 작업 예시">
+        <h3>SNS</h3>
+      </div>
+      <div class="pf-item reveal">
+        <img class="pf-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?fm=jpg&q=70&w=800&auto=format&fit=crop" alt="Marketing 작업 예시">
+        <h3>Marketing</h3>
+      </div>
+      <div class="pf-item reveal">
+        <img class="pf-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?fm=jpg&q=70&w=800&auto=format&fit=crop" alt="Detail Page 작업 예시">
+        <h3>Detail Page</h3>
+      </div>
+      <div class="pf-item reveal">
+        <img class="pf-photo" onerror="this.onerror=null;this.src=window.__capPlaceholder;" src="https://images.unsplash.com/photo-1777652918753-d66882b15391?fm=jpg&q=70&w=800&auto=format&fit=crop" alt="Branding 작업 예시">
+        <h3>Branding</h3>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="pricing" id="pricing">
   <div class="wrap">
-    <div class="sec-head"><div class="label">PRICE GUIDE</div><h2>작업 범위별 시작가</h2><p>분량과 자료 제공 여부에 따라 실제 견적은 달라질 수 있습니다.</p></div>
-    <div class="price-grid">
-      <div class="price"><h3>콘텐츠 제작</h3><div class="money">30,000원~</div><ul><li>SNS 카드뉴스</li><li>광고 배너</li><li>간단 카피 정리</li></ul></div>
-      <div class="price"><h3>문서 디자인</h3><div class="money">100,000원~</div><ul><li>PPT 디자인</li><li>사업계획서</li><li>제안서</li></ul></div>
-      <div class="price"><h3>마케팅 패키지</h3><div class="money">상담 후 견적</div><ul><li>콘텐츠 월 운영</li><li>상세페이지</li><li>광고 소재 제작</li></ul></div>
+    <div class="sec-head reveal">
+      <div class="eyebrow">05 · PRICING</div>
+      <h2>가격</h2>
+      <p>프로젝트 범위와 분량에 따라 달라질 수 있어요. 정확한 견적은 상담을 통해 안내드립니다.</p>
+    </div>
+    <div class="price-list">
+      <div class="price-row reveal"><span class="price-name">사업계획서 · PPT 디자인</span><span class="price-value">50,000원~</span></div>
+      <div class="price-row reveal"><span class="price-name">상세페이지</span><span class="price-value">80,000원~</span></div>
+      <div class="price-row reveal"><span class="price-name">카드뉴스</span><span class="price-value">건당 10,000원~</span></div>
+      <div class="price-row reveal"><span class="price-name">사진 보정</span><span class="price-value">2,000원~</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">06 · WHY NOVA STUDIO</div>
+      <h2>Why NOVA STUDIO?</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="strength-no">01</span>
+        <h3>맞춤형 디자인</h3>
+        <p>브랜드와 목적에 맞춰 매번 새롭게 설계합니다.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="strength-no">02</span>
+        <h3>빠른 피드백</h3>
+        <p>메시지 회신과 수정 요청에 빠르게 대응합니다.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="strength-no">03</span>
+        <h3>목적 중심 디자인</h3>
+        <p>예쁜 것보다 목적을 달성하는 디자인을 우선합니다.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="strength-no">04</span>
+        <h3>다양한 디자인 경험</h3>
+        <p>업종과 포맷을 가리지 않는 폭넓은 작업 경험이 있습니다.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="strength-no">05</span>
+        <h3>지속적인 사후 지원</h3>
+        <p>납품 이후에도 필요한 부분은 계속 도와드립니다.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2>브랜드에 필요한 일을<br>함께 정리해볼까요?</h2>
-    <p>필요한 작업이 명확하지 않아도 괜찮습니다. 현재 상황과 원하는 방향을 알려주시면 가능한 범위부터 정리해드립니다.</p>
-    <div class="btns" style="justify-content:center">
-      <a class="btn kakao" href="https://open.kakao.com/o/여기에오픈채팅코드" target="_blank">카카오톡 문의</a>
-      <a class="btn secondary" href="mailto:yeoni_39@nate.com">이메일 문의</a>
+    <div class="eyebrow">CONTACT</div>
+    <h2>다음 프로젝트,<br>함께 시작해요.</h2>
+    <p>편한 채널로 언제든 문의해주세요. 빠르게 답변드릴게요.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="#contact">문의하기 ↗</a>
+      <a class="btn btn-outline" href="https://pf.kakao.com/" target="_blank" rel="noopener">카카오톡 문의</a>
+      <a class="btn btn-outline" href="https://open.kakao.com/" target="_blank" rel="noopener">오픈채팅</a>
+    </div>
+    <div class="contact-info">
+      <a href="mailto:yeoni_39@nate.com">yeoni_39@nate.com</a>
     </div>
   </div>
 </section>
 
-<a class="float-kakao" href="https://open.kakao.com/o/여기에오픈채팅코드" target="_blank">💬 문의</a>
-<footer>NOVA STUDIO · Creative Marketing Partner · © 2026</footer>
+<footer class="site-foot">
+  <span class="js-brand">NOVA STUDIO</span> · Creative Marketing Partner · © 2026
+</footer>
+
 <script>
-const obs=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  // ============ 브랜드명 수정은 여기서 ============
+  const BRAND_NAME = "NOVA STUDIO";
+  document.querySelectorAll('.js-brand').forEach(function(el){ el.textContent = BRAND_NAME; });
+  document.title = BRAND_NAME + " — Creative Marketing Partner";
+  // =================================================
+
+  // ============ PORTFOLIO OVERVIEW 섹션 사진 안내 ============
+  // 이 HTML 파일과 같은 위치에 "images" 폴더를 만들고, 아래 6개 파일명 그대로
+  // 사진을 넣으면 자동으로 표시됩니다. (권장 비율: 가로가 긴 사진, 4:3~16:9)
+  //   images/branding.jpg        → Branding
+  //   images/web.jpg             → Web
+  //   images/sns-card.jpg        → SNS
+  //   images/ppt-design.jpg      → PPT
+  //   images/detail-page.jpg     → Detail Page
+  //   images/ad-marketing.jpg    → Marketing
+  // 사진을 아직 넣지 않았다면 아래 회색 안내 이미지가 대신 표시됩니다.
+  window.__capPlaceholder = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+    "<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400'>" +
+    "<rect width='100%' height='100%' fill='%23ece9e2'/>" +
+    "<text x='50%' y='48%' font-family='sans-serif' font-size='22' fill='%23999' text-anchor='middle'>사진을 images 폴더에 넣어주세요</text>" +
+    "<text x='50%' y='60%' font-family='monospace' font-size='15' fill='%23bbb' text-anchor='middle'>images/파일명.jpg</text>" +
+    "</svg>"
+  );
+  // ======================================================
+
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (navToggle && navLinks){
+    navToggle.addEventListener('click', function(){
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+    });
+    navLinks.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', '메뉴 열기');
+      });
+    });
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 760){
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
 </script>
+
 </body>
 </html>
